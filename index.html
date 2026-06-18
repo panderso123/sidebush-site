@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sidebush Art — Surreal Cityscapes of the World</title>
+<meta name="description" content="Surreal oil-painting cityscapes of the world's most iconic places. Fine-art prints, canvas & apparel.">
+<style>
+  :root{ --bg:#0a0a0a; --panel:#141414; --line:#2a2a2a; --txt:#f2f2f2; --mut:#9a9a9a; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--bg); color:var(--txt); font-family:Georgia,'Times New Roman',serif; line-height:1.6; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1200px; margin:0 auto; padding:0 24px; }
+
+  /* NAV */
+  header{ position:sticky; top:0; z-index:50; background:rgba(10,10,10,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  nav{ display:flex; align-items:center; justify-content:space-between; height:68px; }
+  .brand{ font-size:20px; letter-spacing:3px; text-transform:uppercase; font-weight:bold; }
+  .menu{ display:flex; gap:34px; font-size:14px; letter-spacing:2px; text-transform:uppercase; }
+  .menu a{ color:var(--mut); transition:color .2s; }
+  .menu a:hover{ color:#fff; }
+  .dropdown{ position:relative; }
+  .dropdown>span{ color:var(--mut); cursor:pointer; transition:color .2s; }
+  .dropdown:hover>span{ color:#fff; }
+  .dropdown-menu{ position:absolute; top:100%; right:0; min-width:240px; background:#0d0d0d; border:1px solid var(--line);
+    padding:8px 0; opacity:0; visibility:hidden; transform:translateY(8px); transition:.18s; }
+  .dropdown:hover .dropdown-menu{ opacity:1; visibility:visible; transform:translateY(0); }
+  .dropdown-menu a{ display:block; padding:11px 20px; font-size:12px; letter-spacing:1.5px; white-space:nowrap; }
+  .dropdown-menu a:hover{ background:#1a1a1a; color:#fff; }
+
+  /* HERO */
+  .hero{ height:78vh; min-height:460px; display:flex; align-items:center; justify-content:center; text-align:center;
+    background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.65)), url('assets/cover.jpg') center/cover no-repeat; filter:grayscale(1); }
+  .hero-inner{ filter:grayscale(0); }
+  .hero h1{ font-size:clamp(36px,7vw,76px); letter-spacing:8px; text-transform:uppercase; }
+  .hero p{ color:#cfcfcf; letter-spacing:4px; text-transform:uppercase; font-size:14px; margin-top:14px; }
+  .btn{ display:inline-block; margin-top:30px; border:1px solid #fff; padding:14px 38px; letter-spacing:3px;
+    text-transform:uppercase; font-size:13px; transition:.2s; }
+  .btn:hover{ background:#fff; color:#000; }
+
+  /* SECTIONS */
+  section{ padding:90px 0; border-bottom:1px solid var(--line); }
+  .eyebrow{ text-align:center; color:var(--mut); letter-spacing:5px; text-transform:uppercase; font-size:12px; }
+  h2{ text-align:center; font-size:clamp(28px,4vw,42px); letter-spacing:4px; text-transform:uppercase; margin:10px 0 50px; }
+
+  /* GALLERY */
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:20px; }
+  .card{ background:var(--panel); border:1px solid var(--line); overflow:hidden; }
+  .card img{ width:100%; display:block; aspect-ratio:9/16; object-fit:cover; filter:grayscale(1); transition:filter .4s, transform .4s; }
+  .card:hover img{ filter:grayscale(0); transform:scale(1.03); }
+  .card .meta{ padding:16px; }
+  .card .meta h3{ font-size:16px; letter-spacing:1px; }
+  .card .meta span{ color:var(--mut); font-size:13px; }
+  .grid.land .card img{ aspect-ratio:16/10; }
+
+  /* ABOUT */
+  .about{ max-width:760px; margin:0 auto; text-align:center; color:#dcdcdc; font-size:18px; }
+  footer{ padding:46px 0; text-align:center; color:var(--mut); font-size:13px; letter-spacing:2px; }
+  footer a{ color:#fff; }
+</style>
+</head>
+<body>
+
+<header><div class="wrap"><nav>
+  <div class="brand">Sidebush Art</div>
+  <div class="menu">
+    <a href="#home">Home</a>
+    <a href="#shop">Shop</a>
+    <div class="dropdown">
+      <span>Gallery ▾</span>
+      <div class="dropdown-menu">
+        <a href="#shop">Surreal Cityscapes</a>
+        <a href="#new">New Arrivals</a>
+        <a href="#surreal">Surreal · Gardens &amp; Cemeteries</a>
+        <a href="#gallery">City Studies</a>
+        <a href="#studies">Architectural · Gardens &amp; Cemeteries</a>
+      </div>
+    </div>
+    <a href="#clothing">Clothing</a>
+    <a href="#about">About</a>
+  </div>
+</nav></div></header>
+
+<div class="hero" id="home"><div class="hero-inner">
+  <h1>Sidebush Art</h1>
+  <p>Surreal Cityscapes of the World</p>
+  <a class="btn" href="#shop">Shop the Collection</a>
+</div></div>
+
+<section id="shop">
+  <div class="wrap">
+    <p class="eyebrow">Surreal Cityscapes</p>
+    <h2>The Collection</h2>
+    <div class="grid">
+      <a class="card" data-sku="kuwait_city" href="https://sidebush.com"><img src="assets/kuwait_city.jpg" alt="Kuwait Towers"><div class="meta"><h3>Kuwait Towers, Burning Sky</h3><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="san_francisco_bay_bridge" href="https://sidebush.com"><img src="assets/san_francisco_bay_bridge.jpg" alt="San Francisco"><div class="meta"><h3>San Francisco, Cosmic Bay</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="hong_kong_harbour" href="https://sidebush.com"><img src="assets/hong_kong_harbour.jpg" alt="Hong Kong Harbour"><div class="meta"><h3>Victoria Harbour</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="hong_kong_street" href="https://sidebush.com"><img src="assets/hong_kong_street.jpg" alt="Hong Kong Street"><div class="meta"><h3>Hong Kong, After Midnight</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="dubai" href="https://sidebush.com"><img src="assets/dubai.jpg" alt="Dubai"><div class="meta"><h3>Dubai After Dark</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="singapore" href="https://sidebush.com"><img src="assets/singapore.jpg" alt="Singapore"><div class="meta"><h3>Singapore, Boat Quay</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="philadelphia_night" href="https://sidebush.com"><img src="assets/philadelphia_night.jpg" alt="Philadelphia Night"><div class="meta"><h3>Philadelphia City Hall</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="philadelphia_blue_hour" href="https://sidebush.com"><img src="assets/philadelphia_blue_hour.jpg" alt="Philadelphia Blue Hour"><div class="meta"><h3>Philadelphia, Blue Hour</h3><span>Print · Canvas</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section id="new">
+  <div class="wrap">
+    <p class="eyebrow">Just Added</p>
+    <h2>New Arrivals</h2>
+    <div class="grid land">
+      <a class="card" data-sku="prague" href="https://sidebush.com"><img src="assets/prague.jpg" alt="Prague"><div class="meta"><h3>Prague, Charles Bridge</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="florence" href="https://sidebush.com"><img src="assets/florence.jpg" alt="Florence"><div class="meta"><h3>Florence, Duomo Dusk</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="rome" href="https://sidebush.com"><img src="assets/rome.jpg" alt="Rome"><div class="meta"><h3>Rome, Eternal Sunset</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="london" href="https://sidebush.com"><img src="assets/london.jpg" alt="London"><div class="meta"><h3>London, The City</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="london_night" href="https://sidebush.com"><img src="assets/london_night.jpg" alt="London Night"><div class="meta"><h3>London, After Dark</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="munich" href="https://sidebush.com"><img src="assets/munich.jpg" alt="Munich"><div class="meta"><h3>Munich, Marienplatz</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="munich_evening" href="https://sidebush.com"><img src="assets/munich_evening.jpg" alt="Munich Evening"><div class="meta"><h3>Munich, Evening Light</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="venice" href="https://sidebush.com"><img src="assets/venice.jpg" alt="Venice"><div class="meta"><h3>Venice, Grand Canal</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="las_vegas" href="https://sidebush.com"><img src="assets/las_vegas.jpg" alt="Las Vegas"><div class="meta"><h3>Las Vegas, The Strip</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="observatory" href="https://sidebush.com"><img src="assets/observatory.jpg" alt="Observatory"><div class="meta"><h3>The Observatory</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="munich_rathaus" href="https://sidebush.com"><img src="assets/munich_rathaus.jpg" alt="Munich Rathaus"><div class="meta"><h3>Munich, Marienplatz Day</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="macau" href="https://sidebush.com"><img src="assets/macau.jpg" alt="Macau"><div class="meta"><h3>Macau, Neon Night</h3><span>Print · Canvas</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <p class="eyebrow">City Studies</p>
+    <h2>Architectural Series</h2>
+    <div class="grid land">
+      <a class="card" data-sku="hong_kong_architectural" href="https://sidebush.com"><img src="assets/hong_kong_architectural.jpg" alt="Hong Kong Study"><div class="meta"><h3>Hong Kong Harbour Study</h3><span>Framed · Canvas</span></div></a>
+      <a class="card" data-sku="seoul_architectural" href="https://sidebush.com"><img src="assets/seoul_architectural.jpg" alt="Seoul Study"><div class="meta"><h3>Seoul Skyline Study</h3><span>Framed · Canvas</span></div></a>
+      <a class="card" data-sku="singapore_marina_bay_architectural" href="https://sidebush.com"><img src="assets/singapore_marina_bay_architectural.jpg" alt="Marina Bay Study"><div class="meta"><h3>Marina Bay Study</h3><span>Framed · Canvas</span></div></a>
+      <a class="card" data-sku="modern_building_rendering" href="https://sidebush.com"><img src="assets/modern_building_rendering.jpg" alt="Urban Corner"><div class="meta"><h3>Urban Corner Study</h3><span>Framed · Canvas</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section id="surreal">
+  <div class="wrap">
+    <p class="eyebrow">Surreal Series</p>
+    <h2>Gardens &amp; Cemeteries</h2>
+    <div class="grid land">
+      <a class="card" data-sku="garden_surreal" href="https://sidebush.com"><img src="assets/garden_surreal.jpg" alt="Surreal Garden"><div class="meta"><h3>The Enchanted Garden</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="cemetery_surreal" href="https://sidebush.com"><img src="assets/cemetery_surreal.jpg" alt="Surreal Cemetery"><div class="meta"><h3>Moonlit Rest</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="zen_garden" href="https://sidebush.com"><img src="assets/zen_garden.jpg" alt="Zen Garden"><div class="meta"><h3>Hidden Grotto</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="koi_garden" href="https://sidebush.com"><img src="assets/koi_garden.jpg" alt="Koi Garden"><div class="meta"><h3>Koi & Lanterns</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="memorial_rotunda" href="https://sidebush.com"><img src="assets/memorial_rotunda.jpg" alt="Memorial"><div class="meta"><h3>The Memorial</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="twilight_park" href="https://sidebush.com"><img src="assets/twilight_park.jpg" alt="Twilight Park"><div class="meta"><h3>Twilight Gardens</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="surreal_monument" href="https://sidebush.com"><img src="assets/surreal_monument.jpg" alt="Surreal Monument"><div class="meta"><h3>Dream Monument</h3><span>Print · Canvas</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section id="studies">
+  <div class="wrap">
+    <p class="eyebrow">Architectural Drawings</p>
+    <h2>Gardens &amp; Cemeteries — Studies</h2>
+    <div class="grid land">
+      <a class="card" data-sku="garden_architectural" href="https://sidebush.com"><img src="assets/garden_architectural.jpg" alt="Garden Study"><div class="meta"><h3>Botanical Garden Study</h3><span>Framed · Canvas</span></div></a>
+      <a class="card" data-sku="cemetery_architectural" href="https://sidebush.com"><img src="assets/cemetery_architectural.jpg" alt="Cemetery Study"><div class="meta"><h3>Cemetery Architectural Study</h3><span>Framed · Canvas</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section id="clothing">
+  <div class="wrap">
+    <p class="eyebrow">Wear the Art</p>
+    <h2>Clothing</h2>
+    <div class="grid land">
+      <a class="card" data-sku="item_tee" href="https://sidebush.com"><img src="assets/kuwait_city.jpg" alt="T-Shirts"><div class="meta"><h3>T-Shirts</h3><span>Any design · all sizes</span></div></a>
+      <a class="card" data-sku="item_hoodie" href="https://sidebush.com"><img src="assets/hong_kong_street.jpg" alt="Hoodies"><div class="meta"><h3>Hoodies</h3><span>Any design · all sizes</span></div></a>
+      <a class="card" data-sku="item_sweatshirt" href="https://sidebush.com"><img src="assets/dubai.jpg" alt="Sweatshirts"><div class="meta"><h3>Sweatshirts</h3><span>Any design · all sizes</span></div></a>
+      <a class="card" data-sku="item_aop_tee" href="https://sidebush.com"><img src="assets/san_francisco_bay_bridge.jpg" alt="All-Over Tees"><div class="meta"><h3>All-Over Print Tees</h3><span>Full-wrap design</span></div></a>
+      <a class="card" data-sku="item_longsleeve" href="https://sidebush.com"><img src="assets/singapore.jpg" alt="Long Sleeves"><div class="meta"><h3>Long Sleeves</h3><span>Any design · all sizes</span></div></a>
+      <a class="card" data-sku="item_tote" href="https://sidebush.com"><img src="assets/florence.jpg" alt="Totes"><div class="meta"><h3>Tote Bags</h3><span>Any design</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <p class="eyebrow">About</p>
+    <h2>The Studio</h2>
+    <p class="about">Sidebush Art turns the world's great cities into surreal oil paintings — Hong Kong's neon midnight, Dubai's glittering towers, Kuwait's burning skyline, San Francisco under a cosmic sky. Each piece is a hand-painted-style original, available as museum-quality prints, canvas, and apparel. Collect the city you love.</p>
+  </div>
+</section>
+
+<footer>© Sidebush Art · <a href="https://sidebush.com">sidebush.com</a></footer>
+
+<script>
+/* ── BUY LINKS ──────────────────────────────────────────────────────────
+   Create each product in your Printify Pop-Up Store, copy its product URL,
+   and paste it here. Cards auto-wire on page load. Until filled, cards point
+   to the store homepage (set STORE below). */
+const STORE = "https://sidebush.com"; // ← your Printify pop-up store URL
+const BUY = {
+  kuwait_city:                 "",  // paste Printify product URL
+  san_francisco_bay_bridge:    "",
+  hong_kong_harbour:           "",
+  hong_kong_street:            "",
+  dubai:                       "",
+  singapore:                   "",
+  philadelphia_night:          "",
+  philadelphia_blue_hour:      "",
+  hong_kong_architectural:     "",
+  seoul_architectural:         "",
+  singapore_marina_bay_architectural: "",
+  modern_building_rendering:   "",
+  prague:                      "",
+  florence:                    "",
+  rome:                        "",
+  london:                      "",
+  london_night:                "",
+  garden_surreal:              "",
+  cemetery_surreal:            "",
+  garden_architectural:        "",
+  cemetery_architectural:      "",
+  munich:"", munich_evening:"", zen_garden:"", koi_garden:"", memorial_rotunda:"",
+  venice:"", las_vegas:"", observatory:"", munich_rathaus:"", twilight_park:"", surreal_monument:"", macau:"",
+};
+document.querySelectorAll('.card').forEach(c=>{
+  const k=c.dataset.sku; c.href = (k && BUY[k]) ? BUY[k] : STORE;
+  c.target="_blank"; c.rel="noopener";
+});
+</script>
+</body>
+</html>
