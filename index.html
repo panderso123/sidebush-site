@@ -79,6 +79,7 @@
     </div>
     <a href="#clothing">Clothing</a>
     <a href="#about">About</a>
+    <a class="cart-link" href="https://sidebush.com">Cart 🛒</a>
   </div>
 </nav></div></header>
 
@@ -226,6 +227,7 @@ document.querySelectorAll('.card').forEach(c=>{
   const k=c.dataset.sku; c.href = (k && BUY[k]) ? BUY[k] : STORE;
   c.target="_blank"; c.rel="noopener";
 });
+document.querySelectorAll('.cart-link').forEach(a=>{a.href=STORE;});
 </script>
 </body>
 </html>
