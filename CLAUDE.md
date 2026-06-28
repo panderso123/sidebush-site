@@ -27,6 +27,15 @@ High-density working rules. Keep this terse — every token here is spent on eve
 - Maintain a running research log of every attempt and its outcome so past failures and successes aren't re-tried.
 - Make one small, isolated change per iteration so each effect is attributable. Repeat until the metric stops improving.
 
+## Automation, cheapest tier first
+- Prefer HTTP/API requests: fastest and cheapest at volume, but more setup and more fragile.
+- Fall back to browser automation (Chrome DevTools MCP) for general, JS-heavy, or stealth tasks — a good middle ground.
+- Reserve computer automation (mouse/keyboard control) for when nothing else works: always works, but slow and token-heavy.
+- Prototype with browser automation, capture the underlying network requests, then graft down to plain HTTP for volume.
+
+## Don't over-rely on one model/harness
+- Keep a fallback model/harness available so an outage or quality dip doesn't zero out productivity. Don't let one model become a monoculture.
+
 ## Docs-first for unfamiliar platforms
 - Before using a non-trivial platform/API you don't have solid context on, read its docs first. Search `"API documentation" + <platform name>`.
 - If the docs won't load for JS/rendering reasons, open a Chrome DevTools MCP instance so the content can be read.
