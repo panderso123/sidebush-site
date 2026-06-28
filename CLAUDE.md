@@ -18,6 +18,7 @@ High-density working rules. Keep this terse — every token here is spent on eve
 - Fan out independent steps to parallel sub-agents, then fan in to one synthesizer. Don't run independent work serially.
 - Keep each sub-agent's context small and self-contained ("zone of good") — short, clean contexts beat one long context.
 - For stochastic / open-ended tasks (brainstorm, find-N, research), run multiple agents on the same query and union the unique results — divergence surfaces answers a single run misses.
+- Pipeline: for sequential work, hand off between specialist agents (A → B → C) so each stays in its "zone of good" rather than one agent accumulating all context.
 - Decompose: split a task into independent branches, run them concurrently, and reserve a final cheap step to integrate.
 - Only fan out when steps are genuinely independent. If step B needs step A's output, keep them sequential.
 
