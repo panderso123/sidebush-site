@@ -14,6 +14,13 @@ High-density working rules. Keep this terse — every token here is spent on eve
 - Batch independent tool calls into a single turn so they run in parallel.
 - Don't re-fetch or re-run expensive steps (browser automation, large reads) when you already have the result.
 
+## Parallelization & sub-agents
+- Fan out independent steps to parallel sub-agents, then fan in to one synthesizer. Don't run independent work serially.
+- Keep each sub-agent's context small and self-contained ("zone of good") — short, clean contexts beat one long context.
+- For stochastic / open-ended tasks (brainstorm, find-N, research), run multiple agents on the same query and union the unique results — divergence surfaces answers a single run misses.
+- Decompose: split a task into independent branches, run them concurrently, and reserve a final cheap step to integrate.
+- Only fan out when steps are genuinely independent. If step B needs step A's output, keep them sequential.
+
 ## Docs-first for unfamiliar platforms
 - Before using a non-trivial platform/API you don't have solid context on, read its docs first. Search `"API documentation" + <platform name>`.
 - If the docs won't load for JS/rendering reasons, open a Chrome DevTools MCP instance so the content can be read.
