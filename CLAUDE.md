@@ -22,6 +22,11 @@ High-density working rules. Keep this terse — every token here is spent on eve
 - Decompose: split a task into independent branches, run them concurrently, and reserve a final cheap step to integrate.
 - Only fan out when steps are genuinely independent. If step B needs step A's output, keep them sequential.
 
+## Auto-research loop
+- When a goal has a measurable metric + a change method + a standard assessment, run an iterative loop: hypothesis → change → assess → keep wins, discard losses.
+- Maintain a running research log of every attempt and its outcome so past failures and successes aren't re-tried.
+- Make one small, isolated change per iteration so each effect is attributable. Repeat until the metric stops improving.
+
 ## Docs-first for unfamiliar platforms
 - Before using a non-trivial platform/API you don't have solid context on, read its docs first. Search `"API documentation" + <platform name>`.
 - If the docs won't load for JS/rendering reasons, open a Chrome DevTools MCP instance so the content can be read.
