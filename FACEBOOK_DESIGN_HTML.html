@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sidebush Art - Facebook Post Designs</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #1a1a1a;
+      font-family: Georgia, 'Times New Roman', serif;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #ffd700;
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
+      letter-spacing: 2px;
+    }
+
+    .variations {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    /* FACEBOOK POST CARD */
+    .post {
+      background: #0a0a0a;
+      border: 2px solid #ffd700;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(255, 215, 0, 0.1);
+    }
+
+    .post-title {
+      background: #141414;
+      padding: 20px;
+      border-bottom: 2px solid #ffd700;
+      color: #ffd700;
+      font-size: 18px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .post-content {
+      padding: 30px 20px;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .image-placeholder {
+      width: 100%;
+      height: 280px;
+      background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+      border: 2px dashed #ffd700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9a9a9a;
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 20px;
+      border-radius: 4px;
+    }
+
+    .post-text {
+      color: #f2f2f2;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .post-headline {
+      color: #ffffff;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .post-body {
+      color: #f2f2f2;
+      font-size: 14px;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .post-divider {
+      height: 2px;
+      background: #ffd700;
+      margin: 16px 0;
+    }
+
+    .post-hashtags {
+      color: #9a9a9a;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .post-link {
+      color: #ffd700;
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    .cta-button {
+      background: #ffd700;
+      color: #0a0a0a;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 0;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      letter-spacing: 1px;
+      margin-top: 16px;
+      display: inline-block;
+      text-transform: uppercase;
+      transition: background 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background: #cc9900;
+    }
+
+    /* VARIATION SPECIFIC STYLES */
+    .variation-1 .post-headline::before {
+      content: "🌆 ";
+    }
+
+    .variation-2 .post-headline::before {
+      content: "👁️ ";
+    }
+
+    .variation-3 .post-headline {
+      color: #ffd700;
+      font-size: 28px;
+      text-transform: uppercase;
+    }
+
+    .category-list {
+      color: #f2f2f2;
+      font-size: 14px;
+      list-style: none;
+      margin: 16px 0;
+      line-height: 1.8;
+    }
+
+    .category-list li::before {
+      margin-right: 8px;
+    }
+
+    .grid-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .grid-image {
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+      border: 2px dashed #ffd700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9a9a9a;
+      font-size: 12px;
+      text-align: center;
+      border-radius: 4px;
+    }
+
+    .specs-section {
+      background: #141414;
+      padding: 30px;
+      border-left: 4px solid #ffd700;
+      margin-bottom: 40px;
+    }
+
+    .specs-title {
+      color: #ffd700;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+    }
+
+    .specs-content {
+      color: #f2f2f2;
+      line-height: 1.8;
+    }
+
+    .specs-content code {
+      background: #0a0a0a;
+      color: #ffd700;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+    }
+
+    .color-swatch {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border-radius: 3px;
+      margin: 0 8px;
+      vertical-align: middle;
+      border: 1px solid #9a9a9a;
+    }
+
+    .design-notes {
+      background: #0a0a0a;
+      padding: 16px;
+      border-radius: 4px;
+      color: #9a9a9a;
+      font-size: 12px;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>SIDEBUSH ART - FACEBOOK POST DESIGNS</h1>
+
+  <!-- COLOR PALETTE REFERENCE -->
+  <div class="specs-section">
+    <div class="specs-title">Brand Color Palette</div>
+    <div class="specs-content">
+      <p>
+        Primary Dark: <span class="color-swatch" style="background: #0a0a0a; border: 1px solid #fff;"></span> <code>#0a0a0a</code>
+        &nbsp;&nbsp;
+        Accent Gold: <span class="color-swatch" style="background: #ffd700;"></span> <code>#ffd700</code>
+        &nbsp;&nbsp;
+        Secondary Gold: <span class="color-swatch" style="background: #cc9900;"></span> <code>#cc9900</code>
+        &nbsp;&nbsp;
+        Text: <span class="color-swatch" style="background: #ffffff; border: 1px solid #999;"></span> <code>#ffffff</code>
+      </p>
+    </div>
+  </div>
+
+  <!-- VARIATIONS -->
+  <div class="variations">
+
+    <!-- VARIATION 1: TRAVEL CITYSCAPE -->
+    <div class="post variation-1">
+      <div class="post-title">VARIATION 1: Travel Cityscape Focus</div>
+      <div class="post-content">
+        <div>
+          <div class="image-placeholder">[Travel Cityscape Image - 1080x400px]<br>e.g. florence_300dpi.jpg</div>
+          <div class="post-text">
+            <div class="post-headline">Ever imagined Florence like THIS?</div>
+            <div class="post-body">
+              The Arno River winds through Florence's iconic skyline with the Duomo glowing in warm terracotta tones at golden hour. Renaissance perfection meets surreal dreamscape.<br><br>
+              ✨ Available as museum-quality prints, canvas, and apparel<br>
+              🎨 Which city is calling you?
+            </div>
+            <div class="post-divider"></div>
+            <div class="post-hashtags">#FlorenceArt #TravelArt #SurrealCityscape #ArtistsOnFacebook</div>
+            <a href="#" class="post-link">https://www.etsy.com/shop/sidebushart</a>
+          </div>
+        </div>
+        <button class="cta-button">View on Etsy</button>
+      </div>
+    </div>
+
+    <!-- VARIATION 2: SURREAL FACES -->
+    <div class="post variation-2">
+      <div class="post-title">VARIATION 2: Surreal Faces Focus</div>
+      <div class="post-content">
+        <div>
+          <div class="image-placeholder">[Surreal Face Image - 1080x400px]<br>e.g. meltface_300dpi.jpg</div>
+          <div class="post-text">
+            <div class="post-headline">This is what your mind looks like...</div>
+            <div class="post-body">
+              A surreal portrait of a face melting and deconstructing with streaming neon colors—yellows, purples, reds, and greens flowing like liquid. Where identity dissolves.<br><br>
+              🎨 Available: Prints | Canvas | Apparel<br>
+              💫 What do YOU see?
+            </div>
+            <div class="post-divider"></div>
+            <div class="post-hashtags">#SurrealArt #AbstractArt #MindBendingArt #ArtistsOnFacebook</div>
+            <a href="#" class="post-link">https://www.etsy.com/shop/sidebushart</a>
+          </div>
+        </div>
+        <button class="cta-button">Discover Now</button>
+      </div>
+    </div>
+
+    <!-- VARIATION 3: BRAND LAUNCH -->
+    <div class="post variation-3">
+      <div class="post-title">VARIATION 3: Brand Launch Focus</div>
+      <div class="post-content">
+        <div>
+          <div class="post-headline">Sidebush Art Is Here</div>
+          <div class="grid-images">
+            <div class="grid-image">[Travel Image]</div>
+            <div class="grid-image">[Face Image]</div>
+            <div class="grid-image">[Garden Image]</div>
+            <div class="grid-image">[Apparel Image]</div>
+          </div>
+          <div class="post-body">
+            Surreal Cityscapes of the World. 52 handcrafted digital artworks available as museum-quality prints, canvas, and wearable art.<br><br>
+            <strong>Dark luxury aesthetic. Bold creativity. Zero compromise.</strong>
+          </div>
+          <ul class="category-list">
+            <li>🌆 Travel Cityscapes</li>
+            <li>👁️ Surreal Faces</li>
+            <li>🌿 Gardens & Spiritual</li>
+            <li>🏛️ Architectural Studies</li>
+            <li>👕 Wearable Art</li>
+          </ul>
+          <div class="post-divider"></div>
+          <div class="post-hashtags">#SurrealArt #DigitalArt #SidebushArt #NewBusiness #ArtistsOnFacebook</div>
+          <a href="#" class="post-link">https://www.etsy.com/shop/sidebushart</a>
+        </div>
+        <button class="cta-button">Explore Collection</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DESIGN SPECIFICATIONS -->
+  <div class="specs-section">
+    <div class="specs-title">Design Specifications</div>
+    <div class="specs-content">
+      <p><strong>Optimal Sizes:</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px; line-height: 2;">
+        <li>Variation 1 & 2: <code>1080x1080px</code> (Facebook square)</li>
+        <li>Variation 3: <code>1200x628px</code> (Facebook cover)</li>
+      </ul>
+
+      <p style="margin-top: 20px;"><strong>Typography:</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px; line-height: 2;">
+        <li>Font: Georgia (serif) or 'Times New Roman'</li>
+        <li>Headline: 48pt bold, white (#ffffff), letter-spacing: 2px</li>
+        <li>Body: 22pt regular, off-white (#f2f2f2), line-height: 1.6</li>
+        <li>Accents: 18pt regular, gold (#ffd700), letter-spacing: 1px</li>
+      </ul>
+
+      <p style="margin-top: 20px;"><strong>Images:</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px; line-height: 2;">
+        <li>Source: /assets/*_300dpi.jpg (300 DPI print-ready)</li>
+        <li>Format: Scale to 1080x1080px or 1200x628px for web</li>
+        <li>Effect: Optional grayscale-to-color hover transition</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- DESIGN TOOLS -->
+  <div class="specs-section">
+    <div class="specs-title">Recommended Design Tools</div>
+    <div class="specs-content">
+      <p><strong>Option A: Canva (Easiest)</strong> - Drag-drop templates, add images, export 1080x1080px</p>
+      <p style="margin-top: 10px;"><strong>Option B: Adobe Express</strong> - Professional typography, custom filters</p>
+      <p style="margin-top: 10px;"><strong>Option C: Figma (Full Control)</strong> - Design system, reusable components, exact specifications</p>
+      <p style="margin-top: 10px;"><strong>Option D: Copy this HTML</strong> - Use this template directly with your images</p>
+    </div>
+  </div>
+
+  <!-- POSTING SCHEDULE -->
+  <div class="specs-section">
+    <div class="specs-title">Recommended Posting Schedule</div>
+    <div class="specs-content">
+      <p><strong>Daily (3x per day):</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px; line-height: 2;">
+        <li><strong>7:00 AM</strong> - Variation 1 (Travel Cityscape)</li>
+        <li><strong>2:00 PM</strong> - Variation 2 (Surreal Face)</li>
+        <li><strong>7:00 PM</strong> - Mix (Variation 1, 2, or 3)</li>
+      </ul>
+
+      <p style="margin-top: 20px;"><strong>Weekly Pattern:</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px; line-height: 2;">
+        <li>Mon-Wed: Focus Variation 1 (travel)</li>
+        <li>Thu-Fri: Focus Variation 2 (surreal faces)</li>
+        <li>Saturday: Variation 3 (brand awareness)</li>
+        <li>Sunday: Engagement/Poll post</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

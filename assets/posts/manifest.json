@@ -1,0 +1,426 @@
+[
+  {
+    "n": 1,
+    "file": "01_777.png",
+    "title": "777",
+    "medium": "Mixed media \u00b7 2026",
+    "series": "Dark Reverie",
+    "source": "777.jpg"
+  },
+  {
+    "n": 2,
+    "file": "02_aop_tee_barong.png",
+    "title": "Tee Barong",
+    "medium": "Wearable edition \u00b7 limited run",
+    "series": "Wearable Editions",
+    "source": "aop_tee_barong.jpg"
+  },
+  {
+    "n": 3,
+    "file": "03_cemetery_architectural.png",
+    "title": "Cemetery",
+    "medium": "Mixed media \u00b7 2026",
+    "series": "Dark Reverie",
+    "source": "cemetery_architectural.jpg"
+  },
+  {
+    "n": 4,
+    "file": "04_cemetery_surreal.png",
+    "title": "Cemetery",
+    "medium": "Mixed media \u00b7 2026",
+    "series": "Dark Reverie",
+    "source": "cemetery_surreal.jpg"
+  },
+  {
+    "n": 5,
+    "file": "05_cute_chibi.png",
+    "title": "Cute Chibi",
+    "medium": "Mixed media \u00b7 2026",
+    "series": "Dark Reverie",
+    "source": "cute_chibi.jpg"
+  },
+  {
+    "n": 6,
+    "file": "06_dubai.png",
+    "title": "Dubai",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "dubai.jpg"
+  },
+  {
+    "n": 7,
+    "file": "07_florence.png",
+    "title": "Florence",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "florence.jpg"
+  },
+  {
+    "n": 8,
+    "file": "08_flower_indonesian.png",
+    "title": "Flower Indonesian",
+    "medium": "Watercolour \u00b7 2026",
+    "series": "Gardens & Bloom",
+    "source": "flower_indonesian.jpg"
+  },
+  {
+    "n": 9,
+    "file": "09_garden_architectural.png",
+    "title": "Garden",
+    "medium": "Watercolour \u00b7 2026",
+    "series": "Gardens & Bloom",
+    "source": "garden_architectural.jpg"
+  },
+  {
+    "n": 10,
+    "file": "10_garden_surreal.png",
+    "title": "Garden",
+    "medium": "Watercolour \u00b7 2026",
+    "series": "Gardens & Bloom",
+    "source": "garden_surreal.jpg"
+  },
+  {
+    "n": 11,
+    "file": "11_hong_kong_architectural.png",
+    "title": "Hong Kong",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "hong_kong_architectural.jpg"
+  },
+  {
+    "n": 12,
+    "file": "12_hong_kong_harbour.png",
+    "title": "Hong Kong Harbour",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "hong_kong_harbour.jpg"
+  },
+  {
+    "n": 13,
+    "file": "13_hong_kong_street.png",
+    "title": "Hong Kong Street",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "hong_kong_street.jpg"
+  },
+  {
+    "n": 14,
+    "file": "14_hoodie_cream.png",
+    "title": "Hoodie Cream",
+    "medium": "Wearable edition \u00b7 limited run",
+    "series": "Wearable Editions",
+    "source": "hoodie_cream.jpg"
+  },
+  {
+    "n": 15,
+    "file": "15_hoodie_surreal_aop.png",
+    "title": "Hoodie",
+    "medium": "Wearable edition \u00b7 limited run",
+    "series": "Wearable Editions",
+    "source": "hoodie_surreal_aop.jpg"
+  },
+  {
+    "n": 16,
+    "file": "16_humming_bird.png",
+    "title": "Humming Bird",
+    "medium": "Watercolour \u00b7 2026",
+    "series": "Gardens & Bloom",
+    "source": "humming_bird.jpg"
+  },
+  {
+    "n": 17,
+    "file": "17_jimmys_coming_home.png",
+    "title": "Jimmys Coming Home",
+    "medium": "Mixed media \u00b7 2026",
+    "series": "Dark Reverie",
+    "source": "jimmys_coming_home.jpg"
+  },
+  {
+    "n": 18,
+    "file": "18_koi_garden.png",
+    "title": "Koi Garden",
+    "medium": "Watercolour \u00b7 2026",
+    "series": "Gardens & Bloom",
+    "source": "koi_garden.jpg"
+  },
+  {
+    "n": 19,
+    "file": "19_kuwait_city.png",
+    "title": "Kuwait City",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "kuwait_city.jpg"
+  },
+  {
+    "n": 20,
+    "file": "20_las_vegas.png",
+    "title": "Las Vegas",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "las_vegas.jpg"
+  },
+  {
+    "n": 21,
+    "file": "21_london.png",
+    "title": "London",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "london.jpg"
+  },
+  {
+    "n": 22,
+    "file": "22_london_night.png",
+    "title": "London Night",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "london_night.jpg"
+  },
+  {
+    "n": 23,
+    "file": "23_macau.png",
+    "title": "Macau",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "macau.jpg"
+  },
+  {
+    "n": 24,
+    "file": "24_meltface.png",
+    "title": "Meltface",
+    "medium": "Mixed media \u00b7 2026",
+    "series": "Dark Reverie",
+    "source": "meltface.jpg"
+  },
+  {
+    "n": 25,
+    "file": "25_memorial_rotunda.png",
+    "title": "Memorial Rotunda",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "memorial_rotunda.jpg"
+  },
+  {
+    "n": 26,
+    "file": "26_methtio.png",
+    "title": "Methtio",
+    "medium": "Mixed media \u00b7 2026",
+    "series": "Dark Reverie",
+    "source": "methtio.jpg"
+  },
+  {
+    "n": 27,
+    "file": "27_modern_building_rendering.png",
+    "title": "Building",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "modern_building_rendering.jpg"
+  },
+  {
+    "n": 28,
+    "file": "28_monkey_forest.png",
+    "title": "Monkey Forest",
+    "medium": "Watercolour \u00b7 2026",
+    "series": "Gardens & Bloom",
+    "source": "monkey_forest.jpg"
+  },
+  {
+    "n": 29,
+    "file": "29_munich.png",
+    "title": "Munich",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "munich.jpg"
+  },
+  {
+    "n": 30,
+    "file": "30_munich_evening.png",
+    "title": "Munich Evening",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "munich_evening.jpg"
+  },
+  {
+    "n": 31,
+    "file": "31_munich_rathaus.png",
+    "title": "Munich Rathaus",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "munich_rathaus.jpg"
+  },
+  {
+    "n": 32,
+    "file": "32_mutiface_remix.png",
+    "title": "Mutiface",
+    "medium": "Mixed media \u00b7 2026",
+    "series": "Dark Reverie",
+    "source": "mutiface_remix.jpg"
+  },
+  {
+    "n": 33,
+    "file": "33_observatory.png",
+    "title": "Observatory",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "observatory.jpg"
+  },
+  {
+    "n": 34,
+    "file": "34_philadelphia_blue_hour.png",
+    "title": "Philadelphia Blue Hour",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "philadelphia_blue_hour.jpg"
+  },
+  {
+    "n": 35,
+    "file": "35_philadelphia_night.png",
+    "title": "Philadelphia Night",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "philadelphia_night.jpg"
+  },
+  {
+    "n": 36,
+    "file": "36_prague.png",
+    "title": "Prague",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "prague.jpg"
+  },
+  {
+    "n": 37,
+    "file": "37_romantic_floral_dress.png",
+    "title": "Romantic Floral Dress",
+    "medium": "Wearable edition \u00b7 limited run",
+    "series": "Wearable Editions",
+    "source": "romantic_floral_dress.jpg"
+  },
+  {
+    "n": 38,
+    "file": "38_rome.png",
+    "title": "Rome",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "rome.jpg"
+  },
+  {
+    "n": 39,
+    "file": "39_san_francisco_bay_bridge.png",
+    "title": "San Francisco Bay Bridge",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "san_francisco_bay_bridge.jpg"
+  },
+  {
+    "n": 40,
+    "file": "40_seoul_architectural.png",
+    "title": "Seoul",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "seoul_architectural.jpg"
+  },
+  {
+    "n": 41,
+    "file": "41_singapore.png",
+    "title": "Singapore",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "singapore.jpg"
+  },
+  {
+    "n": 42,
+    "file": "42_singapore_marina_bay_architectural.png",
+    "title": "Singapore Marina Bay",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "singapore_marina_bay_architectural.jpg"
+  },
+  {
+    "n": 43,
+    "file": "43_smiles_and_cries.png",
+    "title": "Smiles And Cries",
+    "medium": "Mixed media \u00b7 2026",
+    "series": "Dark Reverie",
+    "source": "smiles_and_cries.jpg"
+  },
+  {
+    "n": 44,
+    "file": "44_spiral_crumbles.png",
+    "title": "Spiral Crumbles",
+    "medium": "Mixed media \u00b7 2026",
+    "series": "Dark Reverie",
+    "source": "spiral_crumbles.jpg"
+  },
+  {
+    "n": 45,
+    "file": "45_spiral_indonesia.png",
+    "title": "Spiral Indonesia",
+    "medium": "Mixed media \u00b7 2026",
+    "series": "Dark Reverie",
+    "source": "spiral_indonesia.jpg"
+  },
+  {
+    "n": 46,
+    "file": "46_surreal_monument.png",
+    "title": "Monument",
+    "medium": "Mixed media \u00b7 2026",
+    "series": "Dark Reverie",
+    "source": "surreal_monument.jpg"
+  },
+  {
+    "n": 47,
+    "file": "47_sweatshirt_geometric.png",
+    "title": "Sweatshirt Geometric",
+    "medium": "Wearable edition \u00b7 limited run",
+    "series": "Wearable Editions",
+    "source": "sweatshirt_geometric.jpg"
+  },
+  {
+    "n": 48,
+    "file": "48_sweatshirt_hummingbird.png",
+    "title": "Sweatshirt Hummingbird",
+    "medium": "Wearable edition \u00b7 limited run",
+    "series": "Wearable Editions",
+    "source": "sweatshirt_hummingbird.jpg"
+  },
+  {
+    "n": 49,
+    "file": "49_tee_surreal_faces.png",
+    "title": "Tee Faces",
+    "medium": "Wearable edition \u00b7 limited run",
+    "series": "Wearable Editions",
+    "source": "tee_surreal_faces.jpg"
+  },
+  {
+    "n": 50,
+    "file": "50_tio_round_8.png",
+    "title": "Tio Round",
+    "medium": "Mixed media \u00b7 2026",
+    "series": "Dark Reverie",
+    "source": "tio_round_8.jpg"
+  },
+  {
+    "n": 51,
+    "file": "51_twilight_park.png",
+    "title": "Twilight Park",
+    "medium": "Watercolour \u00b7 2026",
+    "series": "Gardens & Bloom",
+    "source": "twilight_park.jpg"
+  },
+  {
+    "n": 52,
+    "file": "52_venice.png",
+    "title": "Venice",
+    "medium": "Archival pigment print \u00b7 2026",
+    "series": "Nocturne Cities",
+    "source": "venice.jpg"
+  },
+  {
+    "n": 53,
+    "file": "53_zen_garden.png",
+    "title": "Zen Garden",
+    "medium": "Watercolour \u00b7 2026",
+    "series": "Gardens & Bloom",
+    "source": "zen_garden.jpg"
+  }
+]

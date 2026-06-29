@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:#e7e5df;}
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+
+<div style="width:max-content;min-width:100%;min-height:100vh;box-sizing:border-box;padding:48px;background:#e7e5df;font-family:system-ui,-apple-system,sans-serif;">
+
+  <div style="margin-bottom:40px;max-width:900px;">
+    <div style="font-family:Georgia,'Times New Roman',serif;font-size:30px;color:#1a1a1a;letter-spacing:.5px;">Sidebush Art — Travel Cityscape Series</div>
+    <div style="font-size:14px;color:#6b6862;margin-top:8px;line-height:1.5;">Fifteen product-feature posts on the V1 template, one per city — same dark-luxury system, ready to schedule. Each image is a drop slot: drag a different cityscape to swap, double-click to reframe. 1080 × 1080, Facebook-optimal.</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1080px);gap:64px 48px;">
+    <sc-for list="{{ cities }}" as="city" hint-placeholder-count="6">
+      <div>
+        <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#44423d;font-weight:600;margin-bottom:14px;">{{ city.num }} · {{ city.name }}&nbsp;&nbsp;·&nbsp;&nbsp;1080 × 1080</div>
+        <div style="width:1080px;height:1080px;background:#0a0a0a;color:#f2f2f2;font-family:Georgia,'Times New Roman',serif;padding:60px;display:flex;flex-direction:column;position:relative;overflow:hidden;box-shadow:0 14px 50px rgba(0,0,0,.3);">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-family:system-ui,sans-serif;font-size:18px;letter-spacing:5px;color:#ffd700;font-weight:600;">SIDEBUSH&nbsp;ART</div>
+            <div style="font-family:system-ui,sans-serif;font-size:12px;letter-spacing:3px;color:#8f8b82;text-transform:uppercase;">Surreal Cityscapes</div>
+          </div>
+          <div style="height:1px;background:linear-gradient(90deg,rgba(255,215,0,.55),rgba(255,215,0,0));margin:22px 0 26px;"></div>
+          <div style="border:1px solid rgba(255,215,0,.4);padding:10px;background:#0d0d0d;">
+            <image-slot id="{{ city.id }}" style="display:block;width:100%;height:472px;" shape="rect" fit="cover" src="{{ city.img }}" placeholder="Drop a cityscape"></image-slot>
+          </div>
+          <div style="font-family:system-ui,sans-serif;font-size:14px;letter-spacing:4px;color:#ffd700;text-transform:uppercase;margin:30px 0 14px;">{{ city.location }}</div>
+          <div style="font-size:48px;line-height:1.12;font-weight:400;">Ever imagined {{ city.name }} like <span style="font-style:italic;color:#ffd700;">this?</span></div>
+          <div style="font-size:20px;line-height:1.5;color:#b4b0a6;margin-top:18px;max-width:820px;">{{ city.copy }}</div>
+          <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;">
+            <div style="display:inline-flex;align-items:center;gap:12px;border:1px solid #ffd700;color:#ffd700;font-family:system-ui,sans-serif;font-size:15px;letter-spacing:2px;text-transform:uppercase;padding:14px 26px;">View on Etsy <span style="font-size:17px;">→</span></div>
+            <div style="font-family:system-ui,sans-serif;font-size:13px;color:#6f6c64;letter-spacing:1px;text-align:right;line-height:1.7;">{{ city.tags }}<br>etsy.com/shop/sidebushart</div>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;},&quot;showAllEditions&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const core = [
+        { num: '01', name: 'Florence', location: 'Florence · Italy', img: 'art/florence.jpg', id: 'city_florence', tags: '#FlorenceArt   #TravelArt', copy: 'The Arno winds beneath a glowing Duomo at golden hour — Renaissance perfection reimagined as surreal dreamscape.' },
+        { num: '02', name: 'Venice', location: 'Venice · Italy', img: 'art/venice.jpg', id: 'city_venice', tags: '#VeniceArt   #TravelArt', copy: 'Gondolas drift past the Doge\u2019s Palace as a violet sky melts into gold above the Grand Canal.' },
+        { num: '03', name: 'Rome', location: 'Rome · Italy', img: 'art/rome.jpg', id: 'city_rome', tags: '#RomeArt   #TravelArt', copy: 'The Eternal City smolders at dusk — ancient stone breathing beneath a sky stitched from fire.' },
+        { num: '04', name: 'London', location: 'London · England', img: 'art/london.jpg', id: 'city_london', tags: '#LondonArt   #TravelArt', copy: 'The Thames mirrors a restless skyline where centuries of history and electric night collide.' },
+        { num: '05', name: 'Prague', location: 'Prague · Czechia', img: 'art/prague.jpg', id: 'city_prague', tags: '#PragueArt   #TravelArt', copy: 'A hundred spires pierce a dreaming sky as the Vltava carries away the last light of day.' },
+        { num: '06', name: 'Munich', location: 'Munich · Germany', img: 'art/munich.jpg', id: 'city_munich', tags: '#MunichArt   #TravelArt', copy: 'Bavarian rooftops glow amber beneath a sky stitched from twilight and old-world gold.' },
+        { num: '07', name: 'Dubai', location: 'Dubai · UAE', img: 'art/dubai.jpg', id: 'city_dubai', tags: '#DubaiArt   #TravelArt', copy: 'A desert metropolis ignites the night — glass towers reaching into an electric, endless sky.' },
+        { num: '08', name: 'Kuwait City', location: 'Kuwait City · Kuwait', img: 'art/kuwait.jpg', id: 'city_kuwait', tags: '#KuwaitArt   #TravelArt', copy: 'Gulf light pools across a futuristic skyline where the sea meets sculpted, shimmering steel.' },
+        { num: '09', name: 'Singapore', location: 'Singapore', img: 'art/singapore.jpg', id: 'city_singapore', tags: '#SingaporeArt   #TravelArt', copy: 'Marina Bay glimmers like a circuit board of light against a warm, tropical dusk.' },
+        { num: '10', name: 'Hong Kong', location: 'Hong Kong · China', img: 'art/hong_kong.jpg', id: 'city_hongkong', tags: '#HongKongArt   #TravelArt', copy: 'A harbour of a thousand lights trembles below peaks wrapped in neon mist.' },
+        { num: '11', name: 'Macau', location: 'Macau · China', img: 'art/macau.jpg', id: 'city_macau', tags: '#MacauArt   #TravelArt', copy: 'East meets West in a blaze of gold as night turns the bay to molten light.' },
+        { num: '12', name: 'Seoul', location: 'Seoul · South Korea', img: 'art/seoul.jpg', id: 'city_seoul', tags: '#SeoulArt   #TravelArt', copy: 'Glass and tradition rise together beneath a sky brushed in cool, electric blue.' },
+        { num: '13', name: 'Las Vegas', location: 'Las Vegas · USA', img: 'art/las_vegas.jpg', id: 'city_vegas', tags: '#LasVegasArt   #TravelArt', copy: 'The desert\u2019s brightest mirage — a skyline that burns far brighter than the stars.' },
+        { num: '14', name: 'San Francisco', location: 'San Francisco · USA', img: 'art/san_francisco.jpg', id: 'city_sf', tags: '#SanFranciscoArt   #TravelArt', copy: 'The Bay Bridge stretches into the fog as the city hums in silver and gold.' },
+        { num: '15', name: 'Philadelphia', location: 'Philadelphia · USA', img: 'art/philadelphia.jpg', id: 'city_philly', tags: '#PhiladelphiaArt   #TravelArt', copy: 'Blue hour settles over a skyline of brick and ambition — calm, luminous, alive.' }
+    ];
+    const alternates = [
+        { num: '16', name: 'London', location: 'London · After Dark', img: 'art/london_night.jpg', id: 'city_london_night', tags: '#LondonArt   #NightCity', copy: 'The city turns to embers and glass — a midnight London glowing along the river\u2019s edge.' },
+        { num: '17', name: 'Munich', location: 'Munich · Evening', img: 'art/munich_evening.jpg', id: 'city_munich_eve', tags: '#MunichArt   #TravelArt', copy: 'Last light lingers over Bavaria as lamplight warms the old streets to honey and gold.' },
+        { num: '18', name: 'Munich', location: 'Munich · Rathaus', img: 'art/munich_rathaus.jpg', id: 'city_munich_rathaus', tags: '#MunichArt   #Architecture', copy: 'Gothic spires of the Rathaus rise like lace against a sky on the edge of dreaming.' },
+        { num: '19', name: 'Hong Kong', location: 'Hong Kong · Skyline', img: 'art/hong_kong_skyline.jpg', id: 'city_hk_skyline', tags: '#HongKongArt   #Skyline', copy: 'A vertical city of light climbs into the clouds, electric and endless above the harbour.' },
+        { num: '20', name: 'Hong Kong', location: 'Hong Kong · Streets', img: 'art/hong_kong_street.jpg', id: 'city_hk_street', tags: '#HongKongArt   #CityNights', copy: 'Neon rains down narrow streets where every sign tells a story in a hundred glowing colors.' },
+        { num: '21', name: 'Philadelphia', location: 'Philadelphia · Night', img: 'art/philadelphia_night.jpg', id: 'city_philly_night', tags: '#PhiladelphiaArt   #NightCity', copy: 'After dark the skyline burns soft and steady — a quiet constellation of city light.' },
+        { num: '22', name: 'Singapore', location: 'Singapore · Marina Bay', img: 'art/singapore_marina.jpg', id: 'city_sg_marina', tags: '#SingaporeArt   #MarinaBay', copy: 'Marina Bay unfolds like a jewel — futuristic towers mirrored in water lit from within.' }
+    ];
+    const showAll = this.props.showAllEditions ?? false;
+    return { cities: showAll ? core.concat(alternates) : core };
+  }
+}
+</script>
+</body>
+</html>
