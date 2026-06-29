@@ -1,0 +1,11 @@
+# Secrets — never commit
+.env
+.env.*
+*.token
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+
+# Wrangler / Cloudflare local state
+.wrangler/
