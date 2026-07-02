@@ -6,18 +6,19 @@
 <title>Sidebush Art — Surreal Cityscapes of the World</title>
 <meta name="description" content="Surreal oil-painting cityscapes of the world's most iconic places. Fine-art prints, canvas & apparel.">
 <meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://sidebushart.com/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' fill='%23fff' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
 <!-- Social unfurl -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sidebush Art">
 <meta property="og:title" content="Sidebush Art — Surreal Cityscapes of the World">
 <meta property="og:description" content="Surreal oil-painting cityscapes of the world's most iconic places. Fine-art prints, canvas & apparel.">
-<meta property="og:image" content="https://panderso123.github.io/sidebush-site/assets/cover.jpg">
-<meta property="og:url" content="https://panderso123.github.io/sidebush-site/">
+<meta property="og:image" content="https://sidebushart.com/assets/cover.jpg">
+<meta property="og:url" content="https://sidebushart.com/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Sidebush Art — Surreal Cityscapes of the World">
 <meta name="twitter:description" content="Surreal oil-painting cityscapes — prints, canvas & apparel.">
-<meta name="twitter:image" content="https://panderso123.github.io/sidebush-site/assets/cover.jpg">
+<meta name="twitter:image" content="https://sidebushart.com/assets/cover.jpg">
 <style>
   :root{ --bg:#0a0a0a; --panel:#141414; --line:#2a2a2a; --txt:#f2f2f2; --mut:#9a9a9a; }
   *{ margin:0; padding:0; box-sizing:border-box; }
@@ -106,6 +107,49 @@
     background:#fff; color:#000; border:none; cursor:pointer; font-size:20px; line-height:46px; text-align:center;
     opacity:0; pointer-events:none; transform:translateY(10px); transition:.25s; box-shadow:0 6px 20px rgba(0,0,0,.5); }
   #toTop.show{ opacity:1; pointer-events:auto; transform:none; }
+
+  /* STORE: cart badge, modal, drawer, toast */
+  .cart-count{ display:inline-block; min-width:18px; padding:0 5px; border-radius:10px; background:#e9cfa0; color:#000;
+    font-size:11px; line-height:18px; text-align:center; letter-spacing:0; vertical-align:middle; }
+  .ov{ position:fixed; inset:0; z-index:100; background:rgba(0,0,0,.6); backdrop-filter:blur(3px);
+    display:none; align-items:center; justify-content:center; padding:20px; }
+  .ov.open{ display:flex; }
+  .modal{ background:#111; border:1px solid var(--line); max-width:560px; width:100%; max-height:90vh; overflow:auto; }
+  .modal .top{ display:flex; gap:16px; padding:18px; border-bottom:1px solid var(--line); }
+  .modal img{ width:120px; height:150px; object-fit:cover; border:1px solid var(--line); }
+  .modal h3{ font-size:19px; letter-spacing:1px; }
+  .modal .sub{ color:var(--mut); font-size:13px; margin-top:4px; }
+  .modal .body{ padding:18px; }
+  .fld{ margin-bottom:14px; }
+  .fld label{ display:block; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--mut); margin-bottom:6px; }
+  .fld select,.fld input{ width:100%; background:#0c0c0c; color:#fff; border:1px solid var(--line); padding:11px 12px; font-family:inherit; font-size:14px; }
+  .price{ font-size:24px; letter-spacing:1px; margin:6px 0 16px; }
+  .row{ display:flex; gap:10px; }
+  .cbtn{ flex:1; border:1px solid #fff; background:transparent; color:#fff; padding:13px; letter-spacing:2px; text-transform:uppercase;
+    font-size:12px; font-family:inherit; cursor:pointer; transition:.2s; }
+  .cbtn:hover{ background:#fff; color:#000; }
+  .cbtn.gold{ border-color:#e9cfa0; background:#e9cfa0; color:#000; }
+  .cbtn.gold:hover{ filter:brightness(1.08); }
+  .x{ margin-left:auto; background:none; border:none; color:var(--mut); font-size:24px; cursor:pointer; line-height:1; }
+  .x:hover{ color:#fff; }
+  /* cart drawer */
+  .drawer{ position:fixed; top:0; right:0; height:100%; width:min(420px,92vw); background:#0d0d0d; border-left:1px solid var(--line);
+    z-index:101; transform:translateX(100%); transition:transform .3s cubic-bezier(.2,.7,.2,1); display:flex; flex-direction:column; }
+  .drawer.open{ transform:none; }
+  .drawer h3{ padding:20px; border-bottom:1px solid var(--line); letter-spacing:2px; text-transform:uppercase; font-size:15px; display:flex; }
+  .drawer .items{ flex:1; overflow:auto; padding:8px 20px; }
+  .ci{ display:flex; gap:12px; padding:14px 0; border-bottom:1px solid var(--line); }
+  .ci img{ width:54px; height:66px; object-fit:cover; border:1px solid var(--line); }
+  .ci .t{ font-size:14px; } .ci .s{ color:var(--mut); font-size:12px; margin-top:3px; }
+  .ci .p{ margin-left:auto; text-align:right; font-size:14px; }
+  .ci .rm{ background:none; border:none; color:#a55; cursor:pointer; font-size:11px; letter-spacing:1px; margin-top:6px; }
+  .drawer .foot{ padding:20px; border-top:1px solid var(--line); }
+  .drawer .sum{ display:flex; justify-content:space-between; font-size:16px; margin-bottom:14px; letter-spacing:1px; }
+  .empty{ color:var(--mut); text-align:center; padding:50px 20px; font-size:14px; }
+  .toast{ position:fixed; left:50%; bottom:26px; z-index:120; transform:translateX(-50%) translateY(20px);
+    background:#e9cfa0; color:#000; padding:13px 22px; font-size:13px; letter-spacing:1px; opacity:0; pointer-events:none; transition:.3s; }
+  .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+  .note{ color:var(--mut); font-size:12px; margin-top:10px; line-height:1.5; }
 </style>
 </head>
 <body>
@@ -130,7 +174,7 @@
     <a href="#clothing">Clothing</a>
     <a href="https://panderso123.github.io/sidebush-avatar/">Reels</a>
     <a href="#about">About</a>
-    <a class="cart-link" href="https://sidebush.com">Cart 🛒</a>
+    <a class="cart-link" href="#" id="cartLink">Cart 🛒 <span id="cartCount" class="cart-count" hidden>0</span></a>
   </div>
 </nav></div></header>
 
@@ -147,38 +191,38 @@
     <h2>Top 30 — Curated Selection</h2>
     <div class="grid">
       <!-- SURREAL FACES (1-14) -->
-      <a class="card" data-sku="meltface" href="https://www.etsy.com/shop/sidebushart"><img src="assets/meltface.jpg" alt="Meltface"><div class="meta"><h3>Meltface</h3><p>Where Identity Dissolves</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="smiles_and_cries" href="https://www.etsy.com/shop/sidebushart"><img src="assets/smiles_and_cries.jpg" alt="Smiles & Cries"><div class="meta"><h3>Smiles & Cries</h3><p>Cosmic Duality</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="spiral_crumbles" href="https://www.etsy.com/shop/sidebushart"><img src="assets/spiral_crumbles.jpg" alt="Spiral Crumbles"><div class="meta"><h3>Spiral Crumbles</h3><p>Into the Abyss</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="monkey_forest" href="https://www.etsy.com/shop/sidebushart"><img src="assets/monkey_forest.jpg" alt="Monkey Forest"><div class="meta"><h3>Monkey Forest</h3><p>Temple of Light</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="humming_bird" href="https://www.etsy.com/shop/sidebushart"><img src="assets/humming_bird.jpg" alt="Humming Bird"><div class="meta"><h3>Humming Bird</h3><p>Spirit Messenger</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="spiral_indonesia" href="https://www.etsy.com/shop/sidebushart"><img src="assets/spiral_indonesia.jpg" alt="Spiral Indonesia"><div class="meta"><h3>Spiral Indonesia</h3><p>Sacred Descent</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="jimmys_coming_home" href="https://www.etsy.com/shop/sidebushart"><img src="assets/jimmys_coming_home.jpg" alt="Jimmy's Coming Home"><div class="meta"><h3>Jimmy's Coming Home</h3><p>Pure Joy Unleashed</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="tio_round_8" href="https://www.etsy.com/shop/sidebushart"><img src="assets/tio_round_8.jpg" alt="Tio Round 8"><div class="meta"><h3>Tio Round 8</h3><p>Sacred Geometry</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="mutiface_remix" href="https://www.etsy.com/shop/sidebushart"><img src="assets/mutiface_remix.jpg" alt="Mutiface Remix"><div class="meta"><h3>Mutiface Remix</h3><p>Identities Intertwined</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="flower_indonesian" href="https://www.etsy.com/shop/sidebushart"><img src="assets/flower_indonesian.jpg" alt="Flower Indonesian"><div class="meta"><h3>Flower Indonesian</h3><p>Demons & Beauty</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="romantic_floral_dress" href="https://www.etsy.com/shop/sidebushart"><img src="assets/romantic_floral_dress.jpg" alt="Romantic Floral Dress"><div class="meta"><h3>Romantic Floral Dress</h3><p>Wearable Dreams</p><span>Apparel</span></div></a>
-      <a class="card" data-sku="cute_chibi" href="https://www.etsy.com/shop/sidebushart"><img src="assets/cute_chibi.jpg" alt="Cute Chibi"><div class="meta"><h3>Cute Chibi</h3><p>Whimsy in Every Glance</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="methtio" href="https://www.etsy.com/shop/sidebushart"><img src="assets/methtio.jpg" alt="Methtio"><div class="meta"><h3>Methtio</h3><p>Form Surrenders</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="777" href="https://www.etsy.com/shop/sidebushart"><img src="assets/777.jpg" alt="777"><div class="meta"><h3>777</h3><p>Lucky Numbers Align</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="meltface" href="#"><img src="assets/meltface.jpg" alt="Meltface"><div class="meta"><h3>Meltface</h3><p>Where Identity Dissolves</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="smiles_and_cries" href="#"><img src="assets/smiles_and_cries.jpg" alt="Smiles & Cries"><div class="meta"><h3>Smiles & Cries</h3><p>Cosmic Duality</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="spiral_crumbles" href="#"><img src="assets/spiral_crumbles.jpg" alt="Spiral Crumbles"><div class="meta"><h3>Spiral Crumbles</h3><p>Into the Abyss</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="monkey_forest" href="#"><img src="assets/monkey_forest.jpg" alt="Monkey Forest"><div class="meta"><h3>Monkey Forest</h3><p>Temple of Light</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="humming_bird" href="#"><img src="assets/humming_bird.jpg" alt="Humming Bird"><div class="meta"><h3>Humming Bird</h3><p>Spirit Messenger</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="spiral_indonesia" href="#"><img src="assets/spiral_indonesia.jpg" alt="Spiral Indonesia"><div class="meta"><h3>Spiral Indonesia</h3><p>Sacred Descent</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="jimmys_coming_home" href="#"><img src="assets/jimmys_coming_home.jpg" alt="Jimmy's Coming Home"><div class="meta"><h3>Jimmy's Coming Home</h3><p>Pure Joy Unleashed</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="tio_round_8" href="#"><img src="assets/tio_round_8.jpg" alt="Tio Round 8"><div class="meta"><h3>Tio Round 8</h3><p>Sacred Geometry</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="mutiface_remix" href="#"><img src="assets/mutiface_remix.jpg" alt="Mutiface Remix"><div class="meta"><h3>Mutiface Remix</h3><p>Identities Intertwined</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="flower_indonesian" href="#"><img src="assets/flower_indonesian.jpg" alt="Flower Indonesian"><div class="meta"><h3>Flower Indonesian</h3><p>Demons & Beauty</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="romantic_floral_dress" href="#"><img src="assets/romantic_floral_dress.jpg" alt="Romantic Floral Dress"><div class="meta"><h3>Romantic Floral Dress</h3><p>Wearable Dreams</p><span>Apparel</span></div></a>
+      <a class="card" data-sku="cute_chibi" href="#"><img src="assets/cute_chibi.jpg" alt="Cute Chibi"><div class="meta"><h3>Cute Chibi</h3><p>Whimsy in Every Glance</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="methtio" href="#"><img src="assets/methtio.jpg" alt="Methtio"><div class="meta"><h3>Methtio</h3><p>Form Surrenders</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="777" href="#"><img src="assets/777.jpg" alt="777"><div class="meta"><h3>777</h3><p>Lucky Numbers Align</p><span>Print · Canvas · Apparel</span></div></a>
 
       <!-- TRAVEL CITYSCAPES (15-30) -->
-      <a class="card" data-sku="florence" href="https://www.etsy.com/shop/sidebushart"><img src="assets/florence.jpg" alt="Florence"><div class="meta"><h3>Florence</h3><p>Where Art Was Born</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="london_modern" href="https://www.etsy.com/shop/sidebushart"><img src="assets/london_modern.jpg" alt="London Modern Skyline"><div class="meta"><h3>London Modern Skyline</h3><p>Skyline Dreams</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="prague_charles_bridge" href="https://www.etsy.com/shop/sidebushart"><img src="assets/prague_charles_bridge.jpg" alt="Prague Charles Bridge"><div class="meta"><h3>Prague Charles Bridge</h3><p>City of Spires</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="rome_st_peters" href="https://www.etsy.com/shop/sidebushart"><img src="assets/rome_st_peters.jpg" alt="Rome St. Peter's Sunset"><div class="meta"><h3>Rome St. Peter's Sunset</h3><p>Eternal & Sacred</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="venice_grand_canal" href="https://www.etsy.com/shop/sidebushart"><img src="assets/venice_grand_canal.jpg" alt="Venice Grand Canal"><div class="meta"><h3>Venice Grand Canal</h3><p>City on Water</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="munich_rathaus" href="https://www.etsy.com/shop/sidebushart"><img src="assets/munich_rathaus.jpg" alt="Munich Marienplatz"><div class="meta"><h3>Munich Marienplatz</h3><p>Bavarian Grandeur</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="london_night" href="https://www.etsy.com/shop/sidebushart"><img src="assets/london_night.jpg" alt="London Night"><div class="meta"><h3>London Night</h3><p>Glittering Dreams</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="las_vegas" href="https://www.etsy.com/shop/sidebushart"><img src="assets/las_vegas.jpg" alt="Las Vegas Sunset"><div class="meta"><h3>Las Vegas Sunset</h3><p>Desert Magic</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="macau" href="https://www.etsy.com/shop/sidebushart"><img src="assets/macau.jpg" alt="Macau Gaming Resort"><div class="meta"><h3>Macau Gaming Resort</h3><p>Monte Carlo of the East</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="munich_evening" href="https://www.etsy.com/shop/sidebushart"><img src="assets/munich_evening.jpg" alt="Munich Rathaus Evening"><div class="meta"><h3>Munich Rathaus Evening</h3><p>Golden Hour Magic</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="cemetery_surreal" href="https://www.etsy.com/shop/sidebushart"><img src="assets/cemetery_surreal.jpg" alt="Cemetery Surreal"><div class="meta"><h3>Cemetery Surreal</h3><p>Sacred Ground</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="zen_garden" href="https://www.etsy.com/shop/sidebushart"><img src="assets/zen_garden.jpg" alt="Zen Garden"><div class="meta"><h3>Zen Garden</h3><p>Peace in Simplicity</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="garden_surreal" href="https://www.etsy.com/shop/sidebushart"><img src="assets/garden_surreal.jpg" alt="Dream Garden Surreal"><div class="meta"><h3>Dream Garden Surreal</h3><p>Where Fantasy Blooms</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="dubai_modern" href="https://www.etsy.com/shop/sidebushart"><img src="assets/dubai_modern.jpg" alt="Dubai Modern"><div class="meta"><h3>Dubai Modern</h3><p>Architecture of Ambition</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="hong_kong_harbour" href="https://www.etsy.com/shop/sidebushart"><img src="assets/hong_kong_harbour.jpg" alt="Hong Kong Harbour"><div class="meta"><h3>Hong Kong Harbour</h3><p>Past & Future</p><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="singapore" href="https://www.etsy.com/shop/sidebushart"><img src="assets/singapore.jpg" alt="Singapore"><div class="meta"><h3>Singapore</h3><p>The Lion City Glows</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="florence" href="#"><img src="assets/florence.jpg" alt="Florence"><div class="meta"><h3>Florence</h3><p>Where Art Was Born</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="london_modern" href="#"><img src="assets/london_modern.jpg" alt="London Modern Skyline"><div class="meta"><h3>London Modern Skyline</h3><p>Skyline Dreams</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="prague_charles_bridge" href="#"><img src="assets/prague_charles_bridge.jpg" alt="Prague Charles Bridge"><div class="meta"><h3>Prague Charles Bridge</h3><p>City of Spires</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="rome_st_peters" href="#"><img src="assets/rome_st_peters.jpg" alt="Rome St. Peter's Sunset"><div class="meta"><h3>Rome St. Peter's Sunset</h3><p>Eternal & Sacred</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="venice_grand_canal" href="#"><img src="assets/venice_grand_canal.jpg" alt="Venice Grand Canal"><div class="meta"><h3>Venice Grand Canal</h3><p>City on Water</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="munich_rathaus" href="#"><img src="assets/munich_rathaus.jpg" alt="Munich Marienplatz"><div class="meta"><h3>Munich Marienplatz</h3><p>Bavarian Grandeur</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="london_night" href="#"><img src="assets/london_night.jpg" alt="London Night"><div class="meta"><h3>London Night</h3><p>Glittering Dreams</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="las_vegas" href="#"><img src="assets/las_vegas.jpg" alt="Las Vegas Sunset"><div class="meta"><h3>Las Vegas Sunset</h3><p>Desert Magic</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="macau" href="#"><img src="assets/macau.jpg" alt="Macau Gaming Resort"><div class="meta"><h3>Macau Gaming Resort</h3><p>Monte Carlo of the East</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="munich_evening" href="#"><img src="assets/munich_evening.jpg" alt="Munich Rathaus Evening"><div class="meta"><h3>Munich Rathaus Evening</h3><p>Golden Hour Magic</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="cemetery_surreal" href="#"><img src="assets/cemetery_surreal.jpg" alt="Cemetery Surreal"><div class="meta"><h3>Cemetery Surreal</h3><p>Sacred Ground</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="zen_garden" href="#"><img src="assets/zen_garden.jpg" alt="Zen Garden"><div class="meta"><h3>Zen Garden</h3><p>Peace in Simplicity</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="garden_surreal" href="#"><img src="assets/garden_surreal.jpg" alt="Dream Garden Surreal"><div class="meta"><h3>Dream Garden Surreal</h3><p>Where Fantasy Blooms</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="dubai_modern" href="#"><img src="assets/dubai_modern.jpg" alt="Dubai Modern"><div class="meta"><h3>Dubai Modern</h3><p>Architecture of Ambition</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="hong_kong_harbour" href="#"><img src="assets/hong_kong_harbour.jpg" alt="Hong Kong Harbour"><div class="meta"><h3>Hong Kong Harbour</h3><p>Past & Future</p><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="singapore" href="#"><img src="assets/singapore.jpg" alt="Singapore"><div class="meta"><h3>Singapore</h3><p>The Lion City Glows</p><span>Print · Canvas · Apparel</span></div></a>
     </div>
   </div>
 </section>
@@ -188,14 +232,14 @@
     <p class="eyebrow">Surreal Cityscapes</p>
     <h2>The Collection</h2>
     <div class="grid">
-      <a class="card" data-sku="kuwait_city" href="https://sidebush.com"><img src="assets/kuwait_city.jpg" alt="Kuwait Towers"><div class="meta"><h3>Kuwait Towers, Burning Sky</h3><span>Print · Canvas · Apparel</span></div></a>
-      <a class="card" data-sku="san_francisco_bay_bridge" href="https://sidebush.com"><img src="assets/san_francisco_bay_bridge.jpg" alt="San Francisco"><div class="meta"><h3>San Francisco, Cosmic Bay</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="hong_kong_harbour" href="https://sidebush.com"><img src="assets/hong_kong_harbour.jpg" alt="Hong Kong Harbour"><div class="meta"><h3>Victoria Harbour</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="hong_kong_street" href="https://sidebush.com"><img src="assets/hong_kong_street.jpg" alt="Hong Kong Street"><div class="meta"><h3>Hong Kong, After Midnight</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="dubai" href="https://sidebush.com"><img src="assets/dubai.jpg" alt="Dubai"><div class="meta"><h3>Dubai After Dark</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="singapore" href="https://sidebush.com"><img src="assets/singapore.jpg" alt="Singapore"><div class="meta"><h3>Singapore, Boat Quay</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="philadelphia_night" href="https://sidebush.com"><img src="assets/philadelphia_night.jpg" alt="Philadelphia Night"><div class="meta"><h3>Philadelphia City Hall</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="philadelphia_blue_hour" href="https://sidebush.com"><img src="assets/philadelphia_blue_hour.jpg" alt="Philadelphia Blue Hour"><div class="meta"><h3>Philadelphia, Blue Hour</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="kuwait_city" href="#"><img src="assets/kuwait_city.jpg" alt="Kuwait Towers"><div class="meta"><h3>Kuwait Towers, Burning Sky</h3><span>Print · Canvas · Apparel</span></div></a>
+      <a class="card" data-sku="san_francisco_bay_bridge" href="#"><img src="assets/san_francisco_bay_bridge.jpg" alt="San Francisco"><div class="meta"><h3>San Francisco, Cosmic Bay</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="hong_kong_harbour" href="#"><img src="assets/hong_kong_harbour.jpg" alt="Hong Kong Harbour"><div class="meta"><h3>Victoria Harbour</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="hong_kong_street" href="#"><img src="assets/hong_kong_street.jpg" alt="Hong Kong Street"><div class="meta"><h3>Hong Kong, After Midnight</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="dubai" href="#"><img src="assets/dubai.jpg" alt="Dubai"><div class="meta"><h3>Dubai After Dark</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="singapore" href="#"><img src="assets/singapore.jpg" alt="Singapore"><div class="meta"><h3>Singapore, Boat Quay</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="philadelphia_night" href="#"><img src="assets/philadelphia_night.jpg" alt="Philadelphia Night"><div class="meta"><h3>Philadelphia City Hall</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="philadelphia_blue_hour" href="#"><img src="assets/philadelphia_blue_hour.jpg" alt="Philadelphia Blue Hour"><div class="meta"><h3>Philadelphia, Blue Hour</h3><span>Print · Canvas</span></div></a>
     </div>
   </div>
 </section>
@@ -205,18 +249,18 @@
     <p class="eyebrow">Just Added</p>
     <h2>New Arrivals</h2>
     <div class="grid land">
-      <a class="card" data-sku="prague" href="https://sidebush.com"><img src="assets/prague.jpg" alt="Prague"><div class="meta"><h3>Prague, Charles Bridge</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="florence" href="https://sidebush.com"><img src="assets/florence.jpg" alt="Florence"><div class="meta"><h3>Florence, Duomo Dusk</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="rome" href="https://sidebush.com"><img src="assets/rome.jpg" alt="Rome"><div class="meta"><h3>Rome, Eternal Sunset</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="london" href="https://sidebush.com"><img src="assets/london.jpg" alt="London"><div class="meta"><h3>London, The City</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="london_night" href="https://sidebush.com"><img src="assets/london_night.jpg" alt="London Night"><div class="meta"><h3>London, After Dark</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="munich" href="https://sidebush.com"><img src="assets/munich.jpg" alt="Munich"><div class="meta"><h3>Munich, Marienplatz</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="munich_evening" href="https://sidebush.com"><img src="assets/munich_evening.jpg" alt="Munich Evening"><div class="meta"><h3>Munich, Evening Light</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="venice" href="https://sidebush.com"><img src="assets/venice.jpg" alt="Venice"><div class="meta"><h3>Venice, Grand Canal</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="las_vegas" href="https://sidebush.com"><img src="assets/las_vegas.jpg" alt="Las Vegas"><div class="meta"><h3>Las Vegas, The Strip</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="observatory" href="https://sidebush.com"><img src="assets/observatory.jpg" alt="Observatory"><div class="meta"><h3>The Observatory</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="munich_rathaus" href="https://sidebush.com"><img src="assets/munich_rathaus.jpg" alt="Munich Rathaus"><div class="meta"><h3>Munich, Marienplatz Day</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="macau" href="https://sidebush.com"><img src="assets/macau.jpg" alt="Macau"><div class="meta"><h3>Macau, Neon Night</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="prague" href="#"><img src="assets/prague.jpg" alt="Prague"><div class="meta"><h3>Prague, Charles Bridge</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="florence" href="#"><img src="assets/florence.jpg" alt="Florence"><div class="meta"><h3>Florence, Duomo Dusk</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="rome" href="#"><img src="assets/rome.jpg" alt="Rome"><div class="meta"><h3>Rome, Eternal Sunset</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="london" href="#"><img src="assets/london.jpg" alt="London"><div class="meta"><h3>London, The City</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="london_night" href="#"><img src="assets/london_night.jpg" alt="London Night"><div class="meta"><h3>London, After Dark</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="munich" href="#"><img src="assets/munich.jpg" alt="Munich"><div class="meta"><h3>Munich, Marienplatz</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="munich_evening" href="#"><img src="assets/munich_evening.jpg" alt="Munich Evening"><div class="meta"><h3>Munich, Evening Light</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="venice" href="#"><img src="assets/venice.jpg" alt="Venice"><div class="meta"><h3>Venice, Grand Canal</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="las_vegas" href="#"><img src="assets/las_vegas.jpg" alt="Las Vegas"><div class="meta"><h3>Las Vegas, The Strip</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="observatory" href="#"><img src="assets/observatory.jpg" alt="Observatory"><div class="meta"><h3>The Observatory</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="munich_rathaus" href="#"><img src="assets/munich_rathaus.jpg" alt="Munich Rathaus"><div class="meta"><h3>Munich, Marienplatz Day</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="macau" href="#"><img src="assets/macau.jpg" alt="Macau"><div class="meta"><h3>Macau, Neon Night</h3><span>Print · Canvas</span></div></a>
     </div>
   </div>
 </section>
@@ -226,10 +270,10 @@
     <p class="eyebrow">City Studies</p>
     <h2>Architectural Series</h2>
     <div class="grid land">
-      <a class="card" data-sku="hong_kong_architectural" href="https://sidebush.com"><img src="assets/hong_kong_architectural.jpg" alt="Hong Kong Study"><div class="meta"><h3>Hong Kong Harbour Study</h3><span>Framed · Canvas</span></div></a>
-      <a class="card" data-sku="seoul_architectural" href="https://sidebush.com"><img src="assets/seoul_architectural.jpg" alt="Seoul Study"><div class="meta"><h3>Seoul Skyline Study</h3><span>Framed · Canvas</span></div></a>
-      <a class="card" data-sku="singapore_marina_bay_architectural" href="https://sidebush.com"><img src="assets/singapore_marina_bay_architectural.jpg" alt="Marina Bay Study"><div class="meta"><h3>Marina Bay Study</h3><span>Framed · Canvas</span></div></a>
-      <a class="card" data-sku="modern_building_rendering" href="https://sidebush.com"><img src="assets/modern_building_rendering.jpg" alt="Urban Corner"><div class="meta"><h3>Urban Corner Study</h3><span>Framed · Canvas</span></div></a>
+      <a class="card" data-sku="hong_kong_architectural" href="#"><img src="assets/hong_kong_architectural.jpg" alt="Hong Kong Study"><div class="meta"><h3>Hong Kong Harbour Study</h3><span>Framed · Canvas</span></div></a>
+      <a class="card" data-sku="seoul_architectural" href="#"><img src="assets/seoul_architectural.jpg" alt="Seoul Study"><div class="meta"><h3>Seoul Skyline Study</h3><span>Framed · Canvas</span></div></a>
+      <a class="card" data-sku="singapore_marina_bay_architectural" href="#"><img src="assets/singapore_marina_bay_architectural.jpg" alt="Marina Bay Study"><div class="meta"><h3>Marina Bay Study</h3><span>Framed · Canvas</span></div></a>
+      <a class="card" data-sku="modern_building_rendering" href="#"><img src="assets/modern_building_rendering.jpg" alt="Urban Corner"><div class="meta"><h3>Urban Corner Study</h3><span>Framed · Canvas</span></div></a>
     </div>
   </div>
 </section>
@@ -239,13 +283,13 @@
     <p class="eyebrow">Surreal Series</p>
     <h2>Gardens &amp; Cemeteries</h2>
     <div class="grid land">
-      <a class="card" data-sku="garden_surreal" href="https://sidebush.com"><img src="assets/garden_surreal.jpg" alt="Surreal Garden"><div class="meta"><h3>The Enchanted Garden</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="cemetery_surreal" href="https://sidebush.com"><img src="assets/cemetery_surreal.jpg" alt="Surreal Cemetery"><div class="meta"><h3>Moonlit Rest</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="zen_garden" href="https://sidebush.com"><img src="assets/zen_garden.jpg" alt="Zen Garden"><div class="meta"><h3>Hidden Grotto</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="koi_garden" href="https://sidebush.com"><img src="assets/koi_garden.jpg" alt="Koi Garden"><div class="meta"><h3>Koi & Lanterns</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="memorial_rotunda" href="https://sidebush.com"><img src="assets/memorial_rotunda.jpg" alt="Memorial"><div class="meta"><h3>The Memorial</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="twilight_park" href="https://sidebush.com"><img src="assets/twilight_park.jpg" alt="Twilight Park"><div class="meta"><h3>Twilight Gardens</h3><span>Print · Canvas</span></div></a>
-      <a class="card" data-sku="surreal_monument" href="https://sidebush.com"><img src="assets/surreal_monument.jpg" alt="Surreal Monument"><div class="meta"><h3>Dream Monument</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="garden_surreal" href="#"><img src="assets/garden_surreal.jpg" alt="Surreal Garden"><div class="meta"><h3>The Enchanted Garden</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="cemetery_surreal" href="#"><img src="assets/cemetery_surreal.jpg" alt="Surreal Cemetery"><div class="meta"><h3>Moonlit Rest</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="zen_garden" href="#"><img src="assets/zen_garden.jpg" alt="Zen Garden"><div class="meta"><h3>Hidden Grotto</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="koi_garden" href="#"><img src="assets/koi_garden.jpg" alt="Koi Garden"><div class="meta"><h3>Koi & Lanterns</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="memorial_rotunda" href="#"><img src="assets/memorial_rotunda.jpg" alt="Memorial"><div class="meta"><h3>The Memorial</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="twilight_park" href="#"><img src="assets/twilight_park.jpg" alt="Twilight Park"><div class="meta"><h3>Twilight Gardens</h3><span>Print · Canvas</span></div></a>
+      <a class="card" data-sku="surreal_monument" href="#"><img src="assets/surreal_monument.jpg" alt="Surreal Monument"><div class="meta"><h3>Dream Monument</h3><span>Print · Canvas</span></div></a>
     </div>
   </div>
 </section>
@@ -255,8 +299,8 @@
     <p class="eyebrow">Architectural Drawings</p>
     <h2>Gardens &amp; Cemeteries — Studies</h2>
     <div class="grid land">
-      <a class="card" data-sku="garden_architectural" href="https://sidebush.com"><img src="assets/garden_architectural.jpg" alt="Garden Study"><div class="meta"><h3>Botanical Garden Study</h3><span>Framed · Canvas</span></div></a>
-      <a class="card" data-sku="cemetery_architectural" href="https://sidebush.com"><img src="assets/cemetery_architectural.jpg" alt="Cemetery Study"><div class="meta"><h3>Cemetery Architectural Study</h3><span>Framed · Canvas</span></div></a>
+      <a class="card" data-sku="garden_architectural" href="#"><img src="assets/garden_architectural.jpg" alt="Garden Study"><div class="meta"><h3>Botanical Garden Study</h3><span>Framed · Canvas</span></div></a>
+      <a class="card" data-sku="cemetery_architectural" href="#"><img src="assets/cemetery_architectural.jpg" alt="Cemetery Study"><div class="meta"><h3>Cemetery Architectural Study</h3><span>Framed · Canvas</span></div></a>
     </div>
   </div>
 </section>
@@ -267,12 +311,12 @@
     <h2>Clothing</h2>
     <div style="max-width:520px;margin:0 auto 44px;"><video autoplay muted loop playsinline style="width:100%;border:1px solid var(--line);display:block;"><source src="assets/mockups.mp4" type="video/mp4"></video></div>
     <div class="grid">
-      <a class="card" data-sku="item_tee" href="https://sidebush.com"><img src="assets/tee_surreal_faces.jpg" alt="Surreal Faces Tee"><div class="meta"><h3>T-Shirts</h3><span>Any design · all sizes</span></div></a>
-      <a class="card" data-sku="item_aop_tee" href="https://sidebush.com"><img src="assets/aop_tee_barong.jpg" alt="All-Over Print Tee"><div class="meta"><h3>All-Over Print Tees</h3><span>Full-wrap design</span></div></a>
-      <a class="card" data-sku="item_hoodie" href="https://sidebush.com"><img src="assets/hoodie_surreal_aop.jpg" alt="Surreal Faces All-Over-Print Hoodie"><div class="meta"><h3>Hoodies</h3><span>Any design · all sizes</span></div></a>
-      <a class="card" data-sku="item_hoodie_cream" href="https://sidebush.com"><img src="assets/hoodie_cream.jpg" alt="Cream Surreal Hoodie"><div class="meta"><h3>Cream Hoodies</h3><span>Any design · all sizes</span></div></a>
-      <a class="card" data-sku="item_sweatshirt" href="https://sidebush.com"><img src="assets/sweatshirt_geometric.jpg" alt="Geometric Art Sweatshirt"><div class="meta"><h3>Sweatshirts</h3><span>Any design · all sizes</span></div></a>
-      <a class="card" data-sku="item_aop_sweatshirt" href="https://sidebush.com"><img src="assets/sweatshirt_hummingbird.jpg" alt="All-Over Print Sweatshirt"><div class="meta"><h3>All-Over Sweatshirts</h3><span>Full-wrap design</span></div></a>
+      <a class="card" data-sku="item_tee" href="#"><img src="assets/tee_surreal_faces.jpg" alt="Surreal Faces Tee"><div class="meta"><h3>T-Shirts</h3><span>Any design · all sizes</span></div></a>
+      <a class="card" data-sku="item_aop_tee" href="#"><img src="assets/aop_tee_barong.jpg" alt="All-Over Print Tee"><div class="meta"><h3>All-Over Print Tees</h3><span>Full-wrap design</span></div></a>
+      <a class="card" data-sku="item_hoodie" href="#"><img src="assets/hoodie_surreal_aop.jpg" alt="Surreal Faces All-Over-Print Hoodie"><div class="meta"><h3>Hoodies</h3><span>Any design · all sizes</span></div></a>
+      <a class="card" data-sku="item_hoodie_cream" href="#"><img src="assets/hoodie_cream.jpg" alt="Cream Surreal Hoodie"><div class="meta"><h3>Cream Hoodies</h3><span>Any design · all sizes</span></div></a>
+      <a class="card" data-sku="item_sweatshirt" href="#"><img src="assets/sweatshirt_geometric.jpg" alt="Geometric Art Sweatshirt"><div class="meta"><h3>Sweatshirts</h3><span>Any design · all sizes</span></div></a>
+      <a class="card" data-sku="item_aop_sweatshirt" href="#"><img src="assets/sweatshirt_hummingbird.jpg" alt="All-Over Print Sweatshirt"><div class="meta"><h3>All-Over Sweatshirts</h3><span>Full-wrap design</span></div></a>
     </div>
   </div>
 </section>
@@ -285,46 +329,141 @@
   </div>
 </section>
 
-<footer>© Sidebush Art · <a href="https://sidebush.com">sidebush.com</a></footer>
+<footer>© Sidebush Art · <a href="https://sidebushart.com">sidebushart.com</a></footer>
 
 <button id="toTop" aria-label="Back to top">↑</button>
 
+<!-- PRODUCT MODAL -->
+<div class="ov" id="ov" role="dialog" aria-modal="true">
+  <div class="modal" id="modal"></div>
+</div>
+
+<!-- CART DRAWER -->
+<div class="ov" id="cartOv"></div>
+<aside class="drawer" id="drawer" aria-label="Cart">
+  <h3>Your Cart <button class="x" id="cartClose" style="margin-left:auto" aria-label="Close">×</button></h3>
+  <div class="items" id="cartItems"></div>
+  <div class="foot" id="cartFoot"></div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
 <script>
-/* ── BUY LINKS ──────────────────────────────────────────────────────────
-   Create each product in your Printify Pop-Up Store, copy its product URL,
-   and paste it here. Cards auto-wire on page load. Until filled, cards point
-   to the store homepage (set STORE below). */
-const STORE = "https://sidebush.com"; // ← your Printify pop-up store URL
-const BUY = {
-  kuwait_city:                 "",  // paste Printify product URL
-  san_francisco_bay_bridge:    "",
-  hong_kong_harbour:           "",
-  hong_kong_street:            "",
-  dubai:                       "",
-  singapore:                   "",
-  philadelphia_night:          "",
-  philadelphia_blue_hour:      "",
-  hong_kong_architectural:     "",
-  seoul_architectural:         "",
-  singapore_marina_bay_architectural: "",
-  modern_building_rendering:   "",
-  prague:                      "",
-  florence:                    "",
-  rome:                        "",
-  london:                      "",
-  london_night:                "",
-  garden_surreal:              "",
-  cemetery_surreal:            "",
-  garden_architectural:        "",
-  cemetery_architectural:      "",
-  munich:"", munich_evening:"", zen_garden:"", koi_garden:"", memorial_rotunda:"",
-  venice:"", las_vegas:"", observatory:"", munich_rathaus:"", twilight_park:"", surreal_monument:"", macau:"",
-};
-document.querySelectorAll('.card').forEach(c=>{
-  const k=c.dataset.sku; c.href = (k && BUY[k]) ? BUY[k] : STORE;
-  c.target="_blank"; c.rel="noopener";
-});
-document.querySelectorAll('.cart-link').forEach(a=>{a.href=STORE;});
+/* ── SIDEBUSH STORE ENGINE ─────────────────────────────────────────────────
+   Catalog comes from /api/catalog (single source of truth). Buying a product
+   opens a variant picker → cart → Stripe Checkout (/api/checkout). Fulfilment
+   is manual: you reorder each paid item on Printify from your Stripe Dashboard. */
+const fmt = c => "$" + (c/100).toFixed(2);
+let CATALOG = {};
+const cart = JSON.parse(localStorage.getItem('sb_cart') || '[]');
+const saveCart = () => { localStorage.setItem('sb_cart', JSON.stringify(cart)); renderCount(); };
+
+const ov=document.getElementById('ov'), modal=document.getElementById('modal');
+const drawer=document.getElementById('drawer'), cartOv=document.getElementById('cartOv');
+const toastEl=document.getElementById('toast');
+function toast(m){ toastEl.textContent=m; toastEl.classList.add('show'); clearTimeout(toast._t); toast._t=setTimeout(()=>toastEl.classList.remove('show'),2200); }
+function renderCount(){ const n=cart.reduce((s,i)=>s+i.qty,0); const el=document.getElementById('cartCount'); el.textContent=n; el.hidden=n===0; }
+
+/* Load catalog, then wire product cards */
+fetch('/api/catalog').then(r=>r.json()).then(d=>{ CATALOG=d.products||{}; wireCards(); }).catch(()=>{});
+
+function wireCards(){
+  document.querySelectorAll('.card[data-sku]').forEach(c=>{
+    if(!CATALOG[c.dataset.sku]) return;
+    c.setAttribute('href','#');
+    c.addEventListener('click',e=>{ e.preventDefault(); openProduct(c.dataset.sku); });
+  });
+}
+
+function openProduct(sku){
+  const p=CATALOG[sku]; if(!p) return;
+  const formats=[...new Set(p.variants.map(v=>v.format))];
+  const fmtName={print:'Print',canvas:'Canvas',framed:'Framed',apparel:'Apparel Tee',tee:'Tee',hoodie:'Hoodie',sweatshirt:'Sweatshirt'};
+  modal.innerHTML = `
+    <div class="top">
+      <img src="${p.image}" alt="${p.title}">
+      <div><h3>${p.title}</h3><div class="sub">Museum-quality · shipped worldwide</div></div>
+      <button class="x" id="mClose" aria-label="Close">×</button>
+    </div>
+    <div class="body">
+      ${formats.length>1?`<div class="fld"><label>Format</label><select id="fSel">${formats.map(f=>`<option value="${f}">${fmtName[f]||f}</option>`).join('')}</select></div>`:`<input type="hidden" id="fSel" value="${formats[0]}">`}
+      <div class="fld"><label>Size / Option</label><select id="sSel"></select></div>
+      <div class="fld"><label>Quantity</label><input id="qSel" type="number" min="1" max="20" value="1"></div>
+      <div class="price" id="mPrice"></div>
+      <div class="row">
+        <button class="cbtn" id="addBtn">Add to cart</button>
+        <button class="cbtn gold" id="buyBtn">Buy now</button>
+      </div>
+      <p class="note">Secure checkout by Stripe. Prints & apparel fulfilled to order.</p>
+    </div>`;
+  const fSel=modal.querySelector('#fSel'), sSel=modal.querySelector('#sSel'),
+        qSel=modal.querySelector('#qSel'), priceEl=modal.querySelector('#mPrice');
+  const getFmt=()=> fSel.value;
+  function fillSizes(){
+    const vs=p.variants.filter(v=>v.format===getFmt());
+    sSel.innerHTML=vs.map(v=>`<option value="${v.size}" data-c="${v.cents}">${v.size} — ${fmt(v.cents)}</option>`).join('');
+    updatePrice();
+  }
+  function updatePrice(){ const o=sSel.selectedOptions[0]; priceEl.textContent = o? fmt(o.dataset.c*(+qSel.value||1)) : ''; }
+  if(fSel.tagName==='SELECT') fSel.addEventListener('change',fillSizes);
+  sSel.addEventListener('change',updatePrice); qSel.addEventListener('input',updatePrice);
+  fillSizes();
+  function current(){ const o=sSel.selectedOptions[0]; return { id:sku, title:p.title, image:p.image,
+    format:getFmt(), size:sSel.value, label:`${(fmtName[getFmt()]||getFmt())} · ${sSel.value}`,
+    cents:+o.dataset.c, qty:Math.max(1,Math.min(20,+qSel.value||1)) }; }
+  modal.querySelector('#addBtn').onclick=()=>{ addToCart(current()); closeModal(); toast('Added to cart'); };
+  modal.querySelector('#buyBtn').onclick=()=>{ checkout([current()]); };
+  modal.querySelector('#mClose').onclick=closeModal;
+  ov.classList.add('open');
+}
+function closeModal(){ ov.classList.remove('open'); }
+ov.addEventListener('click',e=>{ if(e.target===ov) closeModal(); });
+
+function addToCart(item){
+  const ex=cart.find(i=>i.id===item.id&&i.format===item.format&&i.size===item.size);
+  if(ex) ex.qty=Math.min(20,ex.qty+item.qty); else cart.push(item);
+  saveCart();
+}
+function removeItem(i){ cart.splice(i,1); saveCart(); renderCart(); }
+
+/* Cart drawer */
+function openCart(){ renderCart(); drawer.classList.add('open'); cartOv.classList.add('open'); }
+function closeCart(){ drawer.classList.remove('open'); cartOv.classList.remove('open'); }
+document.getElementById('cartLink').addEventListener('click',e=>{ e.preventDefault(); openCart(); });
+document.getElementById('cartClose').addEventListener('click',closeCart);
+cartOv.addEventListener('click',closeCart);
+function renderCart(){
+  const box=document.getElementById('cartItems'), foot=document.getElementById('cartFoot');
+  if(!cart.length){ box.innerHTML='<div class="empty">Your cart is empty.</div>'; foot.innerHTML=''; return; }
+  box.innerHTML=cart.map((i,idx)=>`
+    <div class="ci"><img src="${i.image}" alt="">
+      <div><div class="t">${i.title}</div><div class="s">${i.label} · Qty ${i.qty}</div>
+        <button class="rm" data-i="${idx}">Remove</button></div>
+      <div class="p">${fmt(i.cents*i.qty)}</div></div>`).join('');
+  const total=cart.reduce((s,i)=>s+i.cents*i.qty,0);
+  foot.innerHTML=`<div class="sum"><span>Subtotal</span><span>${fmt(total)}</span></div>
+    <button class="cbtn gold" id="coBtn">Checkout →</button>
+    <p class="note">Shipping & tax calculated at checkout.</p>`;
+  box.querySelectorAll('.rm').forEach(b=>b.onclick=()=>removeItem(+b.dataset.i));
+  foot.querySelector('#coBtn').onclick=()=>checkout(cart);
+}
+
+/* Stripe checkout */
+async function checkout(items){
+  try{
+    const res=await fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({items:items.map(i=>({id:i.id,format:i.format,size:i.size,qty:i.qty}))})});
+    const data=await res.json();
+    if(data.url){ location.href=data.url; }
+    else { toast(data.error||'Checkout unavailable'); }
+  }catch{ toast('Network error — try again'); }
+}
+
+/* Success / cancel banners */
+(function(){ const q=new URLSearchParams(location.search);
+  if(q.get('paid')){ cart.length=0; saveCart(); toast('Thank you! Your order is confirmed.'); }
+  else if(q.get('canceled')){ toast('Checkout canceled.'); }
+})();
 
 /* ── SCROLL REVEAL ─────────────────────────────────────────────────────── */
 document.querySelectorAll('section .eyebrow, section h2, .about').forEach(el=>el.classList.add('reveal'));
@@ -340,6 +479,7 @@ document.querySelectorAll('.card img').forEach(img=>{ img.loading='lazy'; img.de
 const top=document.getElementById('toTop');
 addEventListener('scroll',()=>{ top.classList.toggle('show', scrollY>700); },{passive:true});
 top.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+renderCount();
 </script>
 </body>
 </html>

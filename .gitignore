@@ -1,0 +1,18 @@
+.DS_Store
+**/.DS_Store
+node_modules/
+.wrangler/
+dist/
+.env
+.env.*
+.dev.vars
+*secret*
+*stripe*.txt
+CLOUDFLARE*
+*.rtfd
+*.log
+
+# Large source archives / raw media not served by the site
+*.zip
+video/
+On-demand social media marketing/

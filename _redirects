@@ -1,0 +1,2 @@
+# Force apex domain (adjust if you prefer www as primary)
+https://www.sidebushart.com/* https://sidebushart.com/:splat 301!
