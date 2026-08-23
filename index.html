@@ -466,8 +466,8 @@ async function checkout(items){
       body:JSON.stringify({items:items.map(i=>({id:i.id,format:i.format,size:i.size,qty:i.qty}))})});
     const data=await res.json();
     if(data.url){ location.href=data.url; }
-    else { toast(data.error||'Checkout unavailable'); }
-  }catch{ toast('Network error — try again'); }
+    else { toast('Opening our Etsy shop…'); setTimeout(()=>{ window.open(ETSY,'_blank','noopener'); },600); }
+  }catch{ toast('Opening our Etsy shop…'); setTimeout(()=>{ window.open(ETSY,'_blank','noopener'); },600); }
 }
 
 /* Success / cancel banners */
