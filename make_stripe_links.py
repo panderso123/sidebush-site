@@ -1,0 +1,142 @@
+#!/usr/bin/env python3
+"""
+make_stripe_links.py — turn sidebush-products.csv into Stripe Payment Links.
+
+One-time setup:
+    pip install stripe
+    export STRIPE_SECRET_KEY=sk_test_...     # use sk_test_ first, then sk_live_
+
+Run:
+    python3 make_stripe_links.py                # create the links
+    python3 make_stripe_links.py --dry-run      # preview, create nothing
+
+Outputs:
+    stripe_links.json   full map:  sku -> { format: url }
+    buy-links.js        ready-to-paste JS for the website (sku -> primary url)
+
+Each link collects a shipping address + lets the buyer set quantity, and tags the
+order with the design SKU + format in metadata, so Stripe tells you exactly what
+to reorder on Printify. Fulfilment stays manual: you make each paid item.
+
+NOTE: running twice creates DUPLICATE links in Stripe. Run once. To start over,
+archive the old products in the Stripe Dashboard (Products) first.
+
+The CSV has unquoted commas in the Description column, so we parse from both ends
+(Title, Subtitle from the left; Category, Formats, SKU, Image from the right —
+none of which contain commas) instead of a naive CSV reader.
+"""
+import json, os, sys
+
+try:
+    import stripe
+except ImportError:
+    sys.exit("Run:  pip install stripe")
+
+KEY = os.environ.get("STRIPE_SECRET_KEY")
+if not KEY:
+    sys.exit("Set STRIPE_SECRET_KEY in your environment (sk_test_... or sk_live_...).")
+stripe.api_key = KEY
+
+DRY = "--dry-run" in sys.argv
+CSV_PATH = "sidebush-products.csv"
+
+# --- Prices in cents. Edit to taste. ---
+PRICE = {
+    "print":  2900,   # $29
+    "framed": 6900,   # $69
+    "canvas": 9900,   # $99
+    "apparel": 3400,  # $34  (tee)
+    "hoodie": 5900,   # $59
+}
+# How the CSV "Formats" tokens map to price tiers above.
+FORMAT_ALIAS = {
+    "print": "print", "poster": "print",
+    "framed": "framed", "frame": "framed",
+    "canvas": "canvas",
+    "apparel": "apparel", "tee": "apparel", "t-shirt": "apparel", "shirt": "apparel",
+    "hoodie": "hoodie", "sweatshirt": "hoodie",
+}
+# Order used to pick each product's "primary" link for the simple site map.
+PRIMARY_ORDER = ["print", "apparel", "canvas", "framed", "hoodie"]
+
+# Where you ship. Add/remove ISO country codes as needed.
+SHIP_COUNTRIES = ["US", "CA", "GB", "AU", "DE", "FR", "NL", "IE", "NZ", "SE", "ES", "IT"]
+
+
+def parse_products(path):
+    """Yield {Title, SKU, Formats, Image} per row, tolerant of unquoted commas."""
+    lines = open(path, encoding="utf-8").read().splitlines()
+    for ln in lines[1:]:
+        f = ln.split(",")
+        if len(f) < 7 or not f[0].strip():
+            continue
+        yield {"Title": f[0].strip(), "SKU": f[-2].strip(),
+               "Formats": f[-3].strip(), "Image": f[-1].strip()}
+
+
+def tiers_for(formats_field):
+    """Parse 'Print · Canvas · Apparel' -> ordered unique tier keys."""
+    out = []
+    for raw in formats_field.replace("|", "·").split("·"):
+        key = FORMAT_ALIAS.get(raw.strip().lower())
+        if key and key not in out:
+            out.append(key)
+    return out or ["print"]
+
+
+def make_link(title, sku, tier, image):
+    label = f"{title} — {tier.capitalize()}"
+    if DRY:
+        print(f"  would create: {label}  (${PRICE[tier]/100:.0f})")
+        return f"https://buy.stripe.com/DRYRUN_{sku}_{tier}"
+    product = stripe.Product.create(
+        name=label,
+        metadata={"sku": sku, "format": tier},
+        images=[f"https://sidebushart.com/{image}"] if image else None,
+    )
+    price = stripe.Price.create(
+        product=product.id, unit_amount=PRICE[tier], currency="usd",
+    )
+    link = stripe.PaymentLink.create(
+        line_items=[{
+            "price": price.id, "quantity": 1,
+            "adjustable_quantity": {"enabled": True, "minimum": 1, "maximum": 20},
+        }],
+        shipping_address_collection={"allowed_countries": SHIP_COUNTRIES},
+        metadata={"sku": sku, "format": tier, "title": title},
+        after_completion={"type": "hosted_confirmation", "hosted_confirmation": {
+            "custom_message": "Thank you! Your art is being made to order and ships worldwide."
+        }},
+    )
+    print(f"  ✓ {label}: {link.url}")
+    return link.url
+
+
+def main():
+    if not os.path.exists(CSV_PATH):
+        sys.exit(f"Can't find {CSV_PATH} — run this from the repo root.")
+    rows = list(parse_products(CSV_PATH))
+    print(f"{'DRY RUN — ' if DRY else ''}Creating links for {len(rows)} products...\n")
+    links, simple = {}, {}
+    for r in rows:
+        sku, title = r["SKU"], r["Title"]
+        if not sku:
+            continue
+        tiers = tiers_for(r["Formats"])
+        links[sku] = {t: make_link(title, sku, t, r["Image"]) for t in tiers}
+        primary = next((t for t in PRIMARY_ORDER if t in links[sku]), tiers[0])
+        simple[sku] = links[sku][primary]
+
+    with open("stripe_links.json", "w") as f:
+        json.dump(links, f, indent=2)
+    with open("buy-links.js", "w") as f:
+        f.write("// Auto-generated by make_stripe_links.py — paste into index.html\n")
+        f.write("const BUY = " + json.dumps(simple, indent=2) + ";\n")
+    print(f"\nDone. {sum(len(v) for v in links.values())} links across {len(links)} products.")
+    print("Wrote stripe_links.json (full) and buy-links.js (site map).")
+    if DRY:
+        print("\n(DRY RUN — nothing was created in Stripe.)")
+
+
+if __name__ == "__main__":
+    main()

@@ -355,6 +355,8 @@
    is manual: you reorder each paid item on Printify from your Stripe Dashboard. */
 const fmt = c => "$" + (c/100).toFixed(2);
 let CATALOG = {};
+const ETSY = "https://www.etsy.com/shop/sidebushart";  // fallback storefront when no Stripe backend
+let STORE_ACTIVE = false;
 const cart = JSON.parse(localStorage.getItem('sb_cart') || '[]');
 const saveCart = () => { localStorage.setItem('sb_cart', JSON.stringify(cart)); renderCount(); };
 
@@ -365,7 +367,16 @@ function toast(m){ toastEl.textContent=m; toastEl.classList.add('show'); clearTi
 function renderCount(){ const n=cart.reduce((s,i)=>s+i.qty,0); const el=document.getElementById('cartCount'); el.textContent=n; el.hidden=n===0; }
 
 /* Load catalog, then wire product cards */
-fetch('/api/catalog').then(r=>r.json()).then(d=>{ CATALOG=d.products||{}; wireCards(); }).catch(()=>{});
+fetch('/api/catalog').then(r=>r.json()).then(d=>{
+  CATALOG=d.products||{};
+  if(Object.keys(CATALOG).length){ STORE_ACTIVE=true; wireCards(); } else etsyFallback();
+}).catch(etsyFallback);
+
+/* No Stripe backend available (e.g. served from GitHub Pages) → send buyers to the Etsy shop. */
+function etsyFallback(){
+  STORE_ACTIVE=false;
+  document.querySelectorAll('.card[data-sku]').forEach(c=>{ c.setAttribute('href',ETSY); c.target='_blank'; c.rel='noopener'; });
+}
 
 function wireCards(){
   document.querySelectorAll('.card[data-sku]').forEach(c=>{
@@ -429,7 +440,7 @@ function removeItem(i){ cart.splice(i,1); saveCart(); renderCart(); }
 /* Cart drawer */
 function openCart(){ renderCart(); drawer.classList.add('open'); cartOv.classList.add('open'); }
 function closeCart(){ drawer.classList.remove('open'); cartOv.classList.remove('open'); }
-document.getElementById('cartLink').addEventListener('click',e=>{ e.preventDefault(); openCart(); });
+document.getElementById('cartLink').addEventListener('click',e=>{ e.preventDefault(); if(!STORE_ACTIVE){ window.open(ETSY,'_blank','noopener'); return; } openCart(); });
 document.getElementById('cartClose').addEventListener('click',closeCart);
 cartOv.addEventListener('click',closeCart);
 function renderCart(){

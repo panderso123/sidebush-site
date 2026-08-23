@@ -22,6 +22,8 @@ echo "  dist size now: $(du -sh dist | cut -f1)  ($(find dist -type f | wc -l | 
 
 # Deploy using your wrangler login (not the old token)
 unset CLOUDFLARE_API_TOKEN
-export CLOUDFLARE_ACCOUNT_ID=f18697935e53f21611fe66bf4c17c185
+# Account id via env or a local .env (gitignored) — never hardcode it in a public repo.
+[ -f .env ] && { set -a; source .env; set +a; }
+[ -z "$CLOUDFLARE_ACCOUNT_ID" ] && { echo "Set CLOUDFLARE_ACCOUNT_ID (export it, or put it in a local .env)"; exit 1; }
 echo "▸ Deploying..."
 npx --yes wrangler@latest pages deploy dist --project-name sidebush-art --branch main --commit-dirty=true
