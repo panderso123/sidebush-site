@@ -1,6 +1,10 @@
 name = "sidebush-art"
 compatibility_date = "2024-11-06"
-pages_build_output_dir = "dist"
+# Serve straight from the repo root: index.html, assets/ and functions/ already
+# live here, so Git-integration builds need no build step. (The old "dist" value
+# required a macOS-only build script that can't run on Cloudflare's Linux builders,
+# which made every GitHub-triggered build fail with "output directory not found".)
+pages_build_output_dir = "."
 
 # Optional: fulfillment-queue storage for /api/orders.
 # 1) npx wrangler kv namespace create ORDERS
