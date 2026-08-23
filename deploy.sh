@@ -1,24 +1,27 @@
 #!/bin/bash
 # Sidebush Art — build a clean dist/ and deploy to Cloudflare Pages.
-# Excludes big zips / raw video that exceed Cloudflare's 25 MB/file limit.
+# NOTE: with the repo connected to Cloudflare Pages via Git integration
+# (production branch: master, output dir: /), pushes deploy automatically and
+# this script is only needed for manual/local deploys.
 set -e
 cd "$(dirname "$0")"
 
-# --- Auth: reuse your existing token if present ---
-ENV_FILE="/Users/travisgough/Projects/creative-conquest/.env"
-[ -f "$ENV_FILE" ] && { set -a; source "$ENV_FILE"; set +a; }
-[ -z "$CLOUDFLARE_API_TOKEN" ] && { echo "❌ CLOUDFLARE_API_TOKEN not set"; exit 1; }
+# --- Auth: token via environment or a local .env (gitignored) ---
+if [ -z "$CLOUDFLARE_API_TOKEN" ] && [ -f .env ]; then
+  set -a; source .env; set +a
+fi
+[ -z "$CLOUDFLARE_API_TOKEN" ] && { echo "❌ Set CLOUDFLARE_API_TOKEN (export it, or put it in a local .env)"; exit 1; }
 
 # Use CLOUDFLARE_ACCOUNT_ID if you set it; otherwise look it up (needs Account:Read).
 if [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
-  RESP=$(/usr/bin/curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  RESP=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
     https://api.cloudflare.com/client/v4/accounts)
-  ACCOUNT_ID=$(printf '%s' "$RESP" | /usr/bin/python3 -c "import sys,json
+  ACCOUNT_ID=$(printf '%s' "$RESP" | python3 -c "import sys,json
 d=json.load(sys.stdin); r=d.get('result') or []
 print(r[0]['id'] if r else '')" 2>/dev/null)
   if [ -z "$ACCOUNT_ID" ]; then
     echo "❌ Could not read your Cloudflare account. The API replied:"
-    printf '%s\n' "$RESP" | /usr/bin/python3 -m json.tool 2>/dev/null || printf '%s\n' "$RESP"
+    printf '%s\n' "$RESP" | python3 -m json.tool 2>/dev/null || printf '%s\n' "$RESP"
     echo ""
     echo "Fix one of these, then re-run ./deploy.sh:"
     echo "  • Token missing permissions → create a token with 'Account:Read' + 'Cloudflare Pages:Edit'"
@@ -41,6 +44,6 @@ BIG=$(find dist -type f -size +25M)
 echo "  $(find dist -type f | wc -l | tr -d ' ') files, $(du -sh dist | cut -f1) total"
 
 # --- Deploy ---
-npx --yes wrangler@latest pages project create sidebush-art --production-branch=main 2>&1 | tail -2 || true
-npx --yes wrangler@latest pages deploy dist --project-name=sidebush-art --branch=main --commit-dirty=true
+npx --yes wrangler@latest pages project create sidebush-art --production-branch=master 2>&1 | tail -2 || true
+npx --yes wrangler@latest pages deploy dist --project-name=sidebush-art --branch=master --commit-dirty=true
 echo "✅ Deployed. Remember to set secrets (see SETUP.md) if you haven't."
